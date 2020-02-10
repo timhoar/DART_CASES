@@ -21,7 +21,9 @@ One strategy is to:
 
 ```
 example[1]% cd cases/existing_case_directory
+
 example[-]% cd ..
+
 example[2]% git clone git@github.com:NCAR/DART_CASES.git bob
 Cloning into 'bob'...
 remote: Enumerating objects: 6, done.
@@ -30,6 +32,7 @@ remote: Compressing objects: 100% (4/4), done.
 remote: Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (6/6), done.
 Resolving deltas: 100% (1/1), done.
+
 example[3]% rsync -av existing_case_directory/ bob/
 sending incremental file list
 ./
@@ -37,12 +40,20 @@ sending incremental file list
 .env_mach_specific.csh
 .env_mach_specific.sh
 ...
+
 example[4]% mv existing_case_directory backup
+
 example[5]% mv bob existing_case_directory
+
 example[6]% <satisfy yourself these directories are 'identical' - caveat the git administration files>
+
 example[-]% cd existing_case_directory
+
 example[7]% git checkout -b <your_casename>
+
 example[8]% <git add/commit/push the useful bits>
+
 example[-]% cd ..
+
 example[9]% rm -rf backup
 ```
