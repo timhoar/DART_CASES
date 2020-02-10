@@ -15,7 +15,9 @@ One strategy is to:
 4. move the CESM CASE directory _out of the way_  ... maybe call it **backup**
 5. rename **bob** to be the original CESM CASE directory name
 6. compare the new CESM CASE directory with **backup**
-7. delete **backup** - or at least make it readonly to prevent you from actually using it.
+7. make a git branch ... with the CASE directory name, perhaps?
+8. add bits to git, commit, push 
+9. delete **backup** - or at least make it readonly to prevent you from actually using it.
 
 ```
 example% cd cases/existing_case_directory
