@@ -40,7 +40,9 @@ sending incremental file list
 example[4]% mv existing_case_directory backup
 example[5]% mv bob existing_case_directory
 example[6]% <satisfy yourself these directories are 'identical' - caveat the git administration files>
+example[-]% cd existing_case_directory
 example[7]% git checkout -b <your_casename>
-example[8]% <git add/commit the useful bits>
+example[8]% <git add/commit/push the useful bits>
+example[-]% cd ..
 example[9]% rm -rf backup
 ```
