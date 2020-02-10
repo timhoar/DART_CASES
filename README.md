@@ -20,9 +20,9 @@ One strategy is to:
 9. delete **backup** - or at least make it readonly to prevent you from actually using it.
 
 ```
-example% cd cases/existing_case_directory
-example% cd ..
-example% git clone git@github.com:NCAR/DART_CASES.git bob
+example[1]% cd cases/existing_case_directory
+example[-]% cd ..
+example[2]% git clone git@github.com:NCAR/DART_CASES.git bob
 Cloning into 'bob'...
 remote: Enumerating objects: 6, done.
 remote: Counting objects: 100% (6/6), done.
@@ -30,16 +30,17 @@ remote: Compressing objects: 100% (4/4), done.
 remote: Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (6/6), done.
 Resolving deltas: 100% (1/1), done.
-example% rsync -av existing_case_directory/ bob/
+example[3]% rsync -av existing_case_directory/ bob/
 sending incremental file list
 ./
 .case.run
 .env_mach_specific.csh
 .env_mach_specific.sh
 ...
-example% mv existing_case_directory backup
-example% mv bob existing_case_directory
-example% <satisfy yourself these directories are 'identical' - caveat the git administration files>
-example% <git add/commit the useful bits>
-example% rm -rf backup
+example[4]% mv existing_case_directory backup
+example[5]% mv bob existing_case_directory
+example[6]% <satisfy yourself these directories are 'identical' - caveat the git administration files>
+example[7]% git checkout -b <your_casename>
+example[8]% <git add/commit the useful bits>
+example[9]% rm -rf backup
 ```
