@@ -41,7 +41,9 @@ remote: Total 6 (delta 1), reused 0 (delta 0), pack-reused 0
 Receiving objects: 100% (6/6), done.
 Resolving deltas: 100% (1/1), done.
 
+example[-]% cd bob
 example[3]% git checkout -b <your_casename>
+example[-]% cd ..
 
 example[4]% rsync -av <your_casename>/ bob/
 sending incremental file list
