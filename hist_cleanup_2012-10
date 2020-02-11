@@ -1,0 +1,500 @@
+   496	10:53:34 17 Oct	 2019 cd ../../../../run
+   497	9:50:26 17 Oct	 2019 ls1
+   498	21:09:51 20 Oct	 2019 ls -lt *0001*.2012-10-03-21600*
+   499	21:09:51 20 Oct	 2019 ls -l $pr/$casename/cpl/hist/0080
+   500	21:09:51 20 Oct	 2019 ls ../../Ce*/2012-10-08-00000/cpl_0001.log.8828868.chadmin1.ib0.cheyenne.ucar.edu.191017-083730*
+   501	13:00:39 16 Oct	 2019 lslt
+   502	13:00:50 16 Oct	 2019 tail repack_st_arch_3622720.eo
+   503	13:37:16 16 Oct	 2019 squeue | grep raeder
+   504	13:37:31 16 Oct	 2019 mkdir Repack_old
+   505	13:37:39 16 Oct	 2019 lslt re*
+   506	13:37:48 16 Oct	 2019 vi repack_st_arch_3622720.eo
+   507	13:38:43 16 Oct	 2019 cds archive/rest
+   508	13:38:44 16 Oct	 2019 lslt
+   509	13:38:56 16 Oct	 2019 cat tar_0065_2012-09-17-00000.eo
+   510	13:39:52 16 Oct	 2019 cd 2012-09-17-00000/
+   511	13:40:06 16 Oct	 2019 ls -lt *0066*
+   512	13:40:19 16 Oct	 2019 ls -lt *0065*
+   513	13:40:22 16 Oct	 2019 ls
+   514	13:40:39 16 Oct	 2019 cd ../2012-09
+   515	13:40:41 16 Oct	 2019 lslt
+   516	13:41:31 16 Oct	 2019 lsl *-00000*
+   517	13:41:45 16 Oct	 2019 lsl *17-00000*
+   518	13:43:02 16 Oct	 2019 cds archive/rest/2012-09-17-00000
+   519	13:43:06 16 Oct	 2019 ls
+   520	13:43:12 16 Oct	 2019 cd ../2012-09
+   521	13:43:24 16 Oct	 2019 tar -t -f f.e21.FHIST_BGC.f09_025.CAM6assim.011.0001.alltypes.2012-09-17-00000.tar
+   522	13:45:31 16 Oct	 2019 tar -t -f f.e21.FHIST_BGC.f09_025.CAM6assim.011.infl_log.alltypes.2012-09-17-00000.tar
+   523	13:45:43 16 Oct	 2019 cd ../../../run
+   524	13:46:03 16 Oct	 2019 ls -l *0001*.i.*-17-0*
+   525	13:46:16 16 Oct	 2019 ls -l *0001*.r.*-17-0*
+   526	13:53:48 16 Oct	 2019 cdc
+   527	13:53:55 16 Oct	 2019 ls -lt *st_*
+   528	13:54:07 16 Oct	 2019 vi f.e21.FHIST_BGC.f09_025.CAM6assim.011.st_archive.o8629795
+   529	13:55:48 16 Oct	 2019 vi f.e21.FHIST_BGC.f09_025.CAM6assim.011.st_archive.o8789198
+   530	13:56:27 16 Oct	 2019 vi f.e21.FHIST_BGC.f09_025.CAM6assim.011.st_archive.o8815238
+   531	13:57:09 16 Oct	 2019 vi f.e21.FHIST_BGC.f09_025.CAM6assim.011.st_archive.o8789198
+   532	13:58:07 16 Oct	 2019 vi f.e21.FHIST_BGC.f09_025.CAM6assim.011.st_archive.o8815238
+   533	13:58:16 16 Oct	 2019 vi f.e21.FHIST_BGC.f09_025.CAM6assim.011.st_archive.o8789198
+   534	14:01:37 16 Oct	 2019 cd -
+   535	14:01:41 16 Oct	 2019 ls -l da.log*
+   536	14:01:58 16 Oct	 2019 cd ../archive/logs
+   537	14:01:59 16 Oct	 2019 lslt
+   538	14:02:15 16 Oct	 2019 ls -lt da.log*
+   539	14:07:27 16 Oct	 2019 mkdir Old_logs
+   540	14:07:40 16 Oct	 2019 mv *.190* Old_logs
+   541	14:09:59 16 Oct	 2019 gunzip da.log*1910*gz
+   542	14:10:47 16 Oct	 2019 grep 2012-09-17-00000 da.log*
+   543	14:11:19 16 Oct	 2019 cd ..
+   544	14:11:21 16 Oct	 2019 lsdir
+   545	14:11:34 16 Oct	 2019 lslt 2012-09-24-00000
+   546	14:11:42 16 Oct	 2019 lsdir
+   547	14:12:06 16 Oct	 2019 ls 2012-09
+   548	14:13:00 16 Oct	 2019 lslt f.e21.FHIST_BGC.f09_025.CAM6assim.011.0001*
+   549	14:13:39 16 Oct	 2019 lslt 2012-09/f.e21.FHIST_BGC.f09_025.CAM6assim.011.0001*
+   550	14:21:49 16 Oct	 2019 loghist
+   551	14:57:22 16 Oct	 2019 cds archive/logs
+   552	14:58:41 16 Oct	 2019 cdc
+   553	14:58:45 16 Oct	 2019 vi assimilate.csh
+   554	14:59:29 16 Oct	 2019 hgrep mkdir
+   555	14:59:47 16 Oct	 2019 cd ../../run
+   556	15:07:14 16 Oct	 2019 ls *0001*191015-062614
+   557	15:07:22 16 Oct	 2019 ls *0001*191015-062614.gz
+   558	15:07:32 16 Oct	 2019 ls *0001*191015-0626
+   559	15:07:34 16 Oct	 2019 ls *0001*191015-0626*
+   560	15:07:53 16 Oct	 2019 vi mv_2012-09-17-00000.csh
+   561	15:10:35 16 Oct	 2019 ls cesm.log*191015-062614*
+   562	15:10:40 16 Oct	 2019 cd ../archive/logs
+   563	15:10:42 16 Oct	 2019 ls cesm.log*191015-062614*
+   564	15:11:03 16 Oct	 2019 cd ../rest
+   565	15:11:19 16 Oct	 2019 ls_frag.csh 191015-062614 3
+   566	15:11:32 16 Oct	 2019 cd ../../Cesm.log.saver/
+   567	15:13:36 16 Oct	 2019 ls_frag.csh 191015-062614 3
+   568	15:22:00 16 Oct	 2019 chmod 755 mv_2012-09-17-00000.csh
+   569	15:22:07 16 Oct	 2019 cd ../run
+   570	15:22:32 16 Oct	 2019 $w/Exp/$casename/mv_2012-09-17-00000.csh
+   571	15:22:42 16 Oct	 2019 vi mv_2012-09-17-00000.csh
+   572	15:23:01 16 Oct	 2019 pwd
+   573	15:23:50 16 Oct	 2019 $w/Exp/$casename/mv_2012-09-17-00000.csh
+   574	15:24:17 16 Oct	 2019 vi repack_st_arch.csh
+   575	15:24:48 16 Oct	 2019 cd ../archive/rest
+   576	15:24:50 16 Oct	 2019 ls
+   577	15:25:16 16 Oct	 2019 rm *.eo
+   578	15:25:18 16 Oct	 2019 ls
+   579	15:26:25 16 Oct	 2019 module load gnu python
+   580	15:26:28 16 Oct	 2019 ncar_pylib 20190326
+   581	15:26:32 16 Oct	 2019 globus login
+   582	15:26:38 16 Oct	 2019 deactivate
+   583	15:27:07 16 Oct	 2019 cdc
+   584	18:39:08 16 Oct	 2019 lslt
+   585	18:39:28 16 Oct	 2019 vi repack_st_arch_3623494.eo
+   586	18:40:48 16 Oct	 2019 lslt
+   587	18:40:56 16 Oct	 2019 cat tar_inf_log_2012-09-17-00000.eo
+   588	18:42:10 16 Oct	 2019 rm *.eo
+   589	18:45:02 16 Oct	 2019 ls -l 2012-09
+   590	18:52:24 16 Oct	 2019 ls -l 2012-09 | wc -l
+   591	18:56:19 16 Oct	 2019 ls 2012-09-17-00000
+   592	19:00:39 16 Oct	 2019 mv 2012-09 2012-09-aborted
+   593	20:43:39 16 Oct	 2019 lslt
+   594	20:43:50 16 Oct	 2019 vi repack_st_arch_3624944.eo
+   595	20:44:21 16 Oct	 2019 history | less
+   596	20:44:59 16 Oct	 2019 lslt
+   597	20:45:06 16 Oct	 2019 vi repack_st_arch_3624944.eo
+   598	20:46:12 16 Oct	 2019 cat *inf*eo
+   599	20:49:54 16 Oct	 2019 cd 2012-09-17-00000/
+   600	20:50:02 16 Oct	 2019 ls -l *{dart.r,log}*
+   601	20:50:22 16 Oct	 2019 cd ../../../Cice_energy_2012-09-17-21600/
+   602	20:50:27 16 Oct	 2019 ls *log*inf*
+   603	20:50:39 16 Oct	 2019 ls *log*
+   604	20:53:03 16 Oct	 2019 cd ../archive/rest/2012-09-24-00000/
+   605	20:53:09 16 Oct	 2019 ls *log* | less
+   606	20:53:34 16 Oct	 2019 cd ..
+   607	20:54:14 16 Oct	 2019 cp ../../Cice_energy_2012-09-17-21600/*_0001.log* 2012-09-17-00000/
+   608	20:54:30 16 Oct	 2019 ls -l 2012-09-17-00000//*_0001.log*
+   609	20:55:22 16 Oct	 2019 ls ../../Cice_energy_2012-09-17-21600/cesm.log*
+   610	20:55:39 16 Oct	 2019 cp ../../Cice_energy_2012-09-17-21600/cesm.log* 2012-09-17-00000
+   611	20:55:57 16 Oct	 2019 ls -l 2012-09-17-00000/*.log*
+   612	20:56:23 16 Oct	 2019 lsl 2012-09
+   613	20:56:37 16 Oct	 2019 rm -rf 2012-09
+   614	20:56:58 16 Oct	 2019 ls 2012-09-17-00000/*dart.r*
+   615	20:57:17 16 Oct	 2019 rm *.eo
+   616	20:57:18 16 Oct	 2019 ls
+   617	20:57:38 16 Oct	 2019 mkdir globus_old
+   618	20:57:48 16 Oct	 2019 mv globus*log globus_old
+   619	20:57:52 16 Oct	 2019 ls
+   620	20:59:15 16 Oct	 2019 sbatch repack_st_arch.csh
+   621	21:03:18 16 Oct	 2019 lslt
+   622	21:04:09 16 Oct	 2019 tail repack_st_arch_3625068.eo
+   623	21:04:25 16 Oct	 2019 lslt
+   624	21:12:39 16 Oct	 2019 tail repack_st_arch_3625068.eo
+   625	22:24:37 16 Oct	 2019 squeue | grep raeder
+   626	22:24:43 16 Oct	 2019 lslt
+   627	22:24:52 16 Oct	 2019 tail repack_st_arch_3625068.eo
+   628	22:25:38 16 Oct	 2019 vi purge.csh
+   629	22:25:59 16 Oct	 2019 cd $pr/$casename
+   630	22:26:09 16 Oct	 2019 ls -l cpl/hist/0080
+   631	22:27:40 16 Oct	 2019 lslt esp/hist/2012-09
+   632	22:27:54 16 Oct	 2019 lslt esp/hist/2012-08
+   633	22:28:25 16 Oct	 2019 ls -l {lnd,atm,ice,rof}/hist/0080/*.{clm2,cam,cice,mosart}_*.h*2012*[cz]
+   634	22:30:18 16 Oct	 2019 ls pur*
+   635	22:30:24 16 Oct	 2019 hgrep purge
+   636	22:30:37 16 Oct	 2019 ./purge.csh > & purge.2012-09 &
+   637	22:31:12 16 Oct	 2019 hgrep submit
+   638	22:32:01 16 Oct	 2019 psef
+   639	22:34:35 16 Oct	 2019 $rean_scr/submit2 2012-10-01-00000 2012-11-01-00000 31 economy
+   640	22:38:24 16 Oct	 2019 qsur
+   641	22:38:44 16 Oct	 2019 loghist
+   642	5:25:26 17 Oct	 2019 cds run
+   643	5:25:28 17 Oct	 2019 lslt
+   644	5:25:41 17 Oct	 2019 cat cesm.log.8824724.chadmin1.ib0.cheyenne.ucar.edu.191016-233834
+   645	5:28:10 17 Oct	 2019 mv cesm.log.8824724.chadmin1.ib0.cheyenne.ucar.edu.191016-233834 ../Cesm.log.saver/
+   646	5:28:14 17 Oct	 2019 ls1
+   647	5:30:12 17 Oct	 2019 cdc
+   648	5:30:16 17 Oct	 2019 hgrep submit
+   649	5:32:35 17 Oct	 2019 $rean_scr/submit2 2012-10-02-64800 2012-10-22-64800 40 economy
+   650	5:57:05 17 Oct	 2019 ls1
+   651	5:57:07 17 Oct	 2019 cd -
+   652	7:07:07 17 Oct	 2019 ls1
+   653	7:07:17 17 Oct	 2019 loghist
+   654	7:55:12 17 Oct	 2019 cds archive/rest
+   655	7:55:14 17 Oct	 2019 ls
+   656	7:56:10 17 Oct	 2019 rm -rf *64800 2011-09 2011-11
+   657	7:56:15 17 Oct	 2019 gladequota
+   658	7:57:59 17 Oct	 2019 cd ../../run
+   659	9:50:26 17 Oct	 2019 ls1
+   660	9:50:44 17 Oct	 2019 cd ..
+   661	9:50:47 17 Oct	 2019 lsDir
+   662	9:51:13 17 Oct	 2019 cd Inflation/
+   663	9:51:18 17 Oct	 2019 ls *obs_seq*
+   664	9:51:22 17 Oct	 2019 cd ..
+   665	9:51:31 17 Oct	 2019 ls [A-Z]*/*obs_seq*
+   666	9:51:35 17 Oct	 2019 cd ..
+   667	9:51:37 17 Oct	 2019 lsDir
+   668	9:51:50 17 Oct	 2019 cd -
+   669	9:51:56 17 Oct	 2019 lslt
+   670	9:52:46 17 Oct	 2019 cd archive/esp/hist
+   671	9:52:47 17 Oct	 2019 lsDir
+   672	9:53:01 17 Oct	 2019 cd Linked_obs_2011-07
+   673	9:53:03 17 Oct	 2019 ls
+   674	9:53:14 17 Oct	 2019 cd ..
+   675	9:53:29 17 Oct	 2019 mkdir Linked_obs_2012-08
+   676	9:53:48 17 Oct	 2019 cp Linked_obs_2011-07/input.nml Linked_obs_2012-08
+   677	9:53:52 17 Oct	 2019 cd Linked_obs_2012-08
+   678	9:53:54 17 Oct	 2019 vi input.nml
+   679	10:01:46 17 Oct	 2019 ls ../*obs_seq*12-08*
+   680	10:02:11 17 Oct	 2019 vi input.nml
+   681	10:02:43 17 Oct	 2019 ls $pr/$casename/esp/hist/2012-08/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cam_obs_seq_final.2012-08.tgz
+   682	10:03:51 17 Oct	 2019 tar -z -x -f $pr/$casename/esp/hist/2012-08/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cam_obs_seq_final.2012-08.tgz f.e21.FHIST_BGC.f09_025.CAM6assim.011.dart.e.cam_obs_seq_final.2012-08-2[3-5]-21600'
+   683	10:03:58 17 Oct	 2019 tar -z -x -f $pr/$casename/esp/hist/2012-08/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cam_obs_seq_final.2012-08.tgz 'f.e21.FHIST_BGC.f09_025.CAM6assim.011.dart.e.cam_obs_seq_final.2012-08-2[3-5]-21600'
+   684	10:04:20 17 Oct	 2019 qsur
+   685	10:11:43 17 Oct	 2019 hgrep obs_seq_to
+   686	10:13:41 17 Oct	 2019 tar -z --wildcards -x -f $pr/$casename/esp/hist/2012-08/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cam_obs_seq_final.2012-08.tgz 'f.e21.FHIST_BGC.f09_025.CAM6assim.011.dart.e.cam_obs_seq_final.2012-08-2[3-5]-21600'
+   687	10:18:55 17 Oct	 2019 cd DART/reanalysis/observations/obs_converters/
+   688	10:19:04 17 Oct	 2019 ls *airs*
+   689	10:19:11 17 Oct	 2019 ls *AIRS*
+   690	10:19:14 17 Oct	 2019 cd *AIRS*
+   691	10:19:32 17 Oct	 2019 grep variance *
+   692	10:19:45 17 Oct	 2019 vi airs_obs_mod.f90
+   693	10:27:17 17 Oct	 2019 lslt
+   694	10:28:28 17 Oct	 2019 $rean_cam/work/obs_seq_to_netcdf | & tee 23h6-25h6_x24h.out
+   695	10:28:42 17 Oct	 2019 vi input.nml
+   696	10:29:43 17 Oct	 2019 $rean_cam/work/obs_seq_to_netcdf | & tee 23h6-25h6_x24h.out
+   697	10:30:02 17 Oct	 2019 cd $obs/AIRS
+   698	10:30:03 17 Oct	 2019 ls
+   699	10:30:25 17 Oct	 2019 cd AIRS_24_sub9x10_nceperrs/201208
+   700	10:30:27 17 Oct	 2019 ls
+   701	10:30:35 17 Oct	 2019 less obs_seq.AIRS.20120801.out
+   702	10:31:16 17 Oct	 2019 vi obs_seq.AIRS.20120801.out
+   703	10:38:08 17 Oct	 2019 lslt
+   704	10:38:30 17 Oct	 2019 vi 23h6-25h6_x24h.out
+   705	10:39:55 17 Oct	 2019 mv obs_epoch_001.nc obs_epoch_2012-08-23-21600
+   706	10:39:58 17 Oct	 2019 vi input.nml
+   707	10:40:46 17 Oct	 2019 $rean_cam/work/obs_seq_to_netcdf | & tee 24h6.out
+   708	10:43:56 17 Oct	 2019 lslt
+   709	10:44:20 17 Oct	 2019 mv obs_epoch_001.nc obs_epoch_2012-08-24-2160.nc
+   710	10:44:30 17 Oct	 2019 mv obs_epoch_2012-08-23-21600 obs_epoch_2012-08-23-21600.nc
+   711	10:44:38 17 Oct	 2019 lslt
+   712	10:44:52 17 Oct	 2019 mv obs_epoch_2012-08-24-2160.nc obs_epoch_2012-08-24-21600.nc
+   713	10:44:59 17 Oct	 2019 vi 24h6.out
+   714	10:45:21 17 Oct	 2019 vi input.nml
+   715	10:45:48 17 Oct	 2019 $rean_cam/work/obs_seq_to_netcdf | & tee 25h6.out
+   716	10:48:29 17 Oct	 2019 mv obs_epoch_001.nc obs_epoch_2012-08-25-21600.nc
+   717	10:48:31 17 Oct	 2019 lslt
+   718	10:49:28 17 Oct	 2019 tar -c -f obs_epoch_2012-08-23to25-21600.tar obs*nc
+   719	10:49:41 17 Oct	 2019 echo `pwd`/obs_epoch_2012-08-23to25-21600.tar
+   720	10:53:34 17 Oct	 2019 cd ../../../../run
+   721	10:53:35 17 Oct	 2019 ls1
+   722	10:54:03 17 Oct	 2019 cdc
+   723	10:54:07 17 Oct	 2019 hgrep lock
+   724	10:54:14 17 Oct	 2019 vi env_batch.xml LockedFiles/env_batch.xml
+   725	11:09:28 17 Oct	 2019 cd -
+   726	11:10:00 17 Oct	 2019 ncdump -v CopyMetaData obs_epoch_2012-08-23-21600.nc > obs_epoch_2012-08-23-21600.CopyMetaData
+   727	11:10:02 17 Oct	 2019 vi obs_epoch_2012-08-23-21600.CopyMetaData
+   728	11:13:28 17 Oct	 2019 cd-
+   729	11:13:31 17 Oct	 2019 cd -
+   730	11:14:08 17 Oct	 2019 cd ~/DART/reanalysis_git/diagnostics/matlab/
+   731	11:14:12 17 Oct	 2019 vi link_obs.m
+   732	11:23:40 17 Oct	 2019 cd -
+   733	11:23:42 17 Oct	 2019 ls1
+   734	11:23:54 17 Oct	 2019 qsur
+   735	11:24:11 17 Oct	 2019 hgrep submit | tail -n 4
+   736	11:43:27 17 Oct	 2019 ls1
+   737	11:43:38 17 Oct	 2019 lslt
+   738	11:44:20 17 Oct	 2019 ls1
+   739	13:36:26 17 Oct	 2019 qsur
+   740	14:51:39 17 Oct	 2019 loghist
+   741	11:14:16 18 Oct	 2019 cds run
+   742	11:33:57 18 Oct	 2019 ls1
+   743	11:56:01 18 Oct	 2019 qsur
+   744	11:56:11 18 Oct	 2019 ls1
+   745	11:56:33 18 Oct	 2019 hgrep submit
+   746	11:56:51 18 Oct	 2019 lslt
+   747	11:57:17 18 Oct	 2019 cat cesm.log.8834006
+   748	12:55:44 18 Oct	 2019 cat cesm.log.8834006.chadmin1.ib0.cheyenne.ucar.edu.191018-11
+   749	12:55:58 18 Oct	 2019 lslt
+   750	12:56:13 18 Oct	 2019 cat cesm.log.8834006.chadmin1.ib0.cheyenne.ucar.edu.191018-114454
+   751	12:57:06 18 Oct	 2019 cdc
+   752	12:59:25 18 Oct	 2019 ls1
+   753	13:01:11 18 Oct	 2019 mv cesm.log.8834006.chadmin1.ib0.cheyenne.ucar.edu.191018-114454 ../Cesm.log.saver/
+   754	13:01:23 18 Oct	 2019 $rean_scr/submit2 2012-10-21-00000 2012-10-26-00000 20 premium
+   755	13:20:47 18 Oct	 2019 cd ~/DART/reanalysis_git/documentation/
+   756	13:20:59 18 Oct	 2019 ls_frag.csh Getting 4
+   757	13:21:53 18 Oct	 2019 findfile docs
+   758	15:08:54 18 Oct	 2019 cdc
+   759	15:09:01 18 Oct	 2019 hgrep ock
+   760	15:09:05 18 Oct	 2019 vi env_batch.xml LockedFiles/env_batch.xml
+   761	16:58:39 18 Oct	 2019 qsur
+   762	16:59:15 18 Oct	 2019 loghist
+   763	19:10:15 18 Oct	 2019 qsur
+   764	19:10:28 18 Oct	 2019 cdc
+   765	19:10:32 18 Oct	 2019 vi env_batch.xml
+   766	19:11:02 18 Oct	 2019 qmove R8846317 8845524
+   767	20:05:21 18 Oct	 2019 qsur
+   768	20:17:30 18 Oct	 2019 cds run
+   769	20:17:33 18 Oct	 2019 ls1
+   770	20:44:43 18 Oct	 2019 lslt
+   771	20:45:01 18 Oct	 2019 cat cesm.log.8845524
+   772	20:45:06 18 Oct	 2019 cat cesm.log.8845524.chadmin1.ib0.cheyenne.ucar.edu.191018-20
+   773	20:45:30 18 Oct	 2019 cat cesm.log.8845524.chadmin1.ib0.cheyenne.ucar.edu.191018-20*0
+   774	20:48:02 18 Oct	 2019 ls1
+   775	20:48:52 18 Oct	 2019 cd -
+   776	20:49:24 18 Oct	 2019 vi env_batch.xml
+   777	20:50:03 18 Oct	 2019 hgrep submit
+   778	20:51:50 18 Oct	 2019 cd -
+   779	20:51:51 18 Oct	 2019 ls1
+   780	20:52:07 18 Oct	 2019 cdc
+   781	20:53:50 18 Oct	 2019 $rean_scr/submit2 2012-10-22-00000 2012-11-01-00000 8 R8846317
+   782	20:53:58 18 Oct	 2019 cd -
+   783	20:54:14 18 Oct	 2019 mv cesm.log.8845524.chadmin1.ib0.cheyenne.ucar.edu.191018-20*0 ../Cesm.log.saver/
+   784	20:54:15 18 Oct	 2019 cd -
+   785	20:54:24 18 Oct	 2019 $rean_scr/submit2 2012-10-22-00000 2012-11-01-00000 8 R8846317
+   786	21:05:54 18 Oct	 2019 qsur
+   787	21:05:58 18 Oct	 2019 ls1
+   788	21:06:02 18 Oct	 2019 cd -
+   789	22:27:37 18 Oct	 2019 ls1
+   790	22:28:02 18 Oct	 2019 loghist
+   791	5:34:50 19 Oct	 2019 cds run
+   792	5:34:58 19 Oct	 2019 lslt
+   793	5:35:24 19 Oct	 2019 cdc
+   794	5:35:30 19 Oct	 2019 ./case.submit -j case.st_archive
+   795	6:17:11 19 Oct	 2019 cds archive/esp/hist
+   796	6:17:28 19 Oct	 2019 ls *obs_seq*21-10*
+   797	6:17:32 19 Oct	 2019 ls *obs_seq*12-10*
+   798	6:18:18 19 Oct	 2019 vi $rean_scr/diags_rean.csh
+   799	6:21:11 19 Oct	 2019 qsur
+   800	6:21:24 19 Oct	 2019 gladequota
+   801	6:22:13 19 Oct	 2019 hgrep submit
+   802	6:22:51 19 Oct	 2019 $rean_scr/submit2 2012-11-01-00000 2012-12-01-00000 8 R8846317
+   803	6:23:22 19 Oct	 2019 qsub $rean_scr/diags_rean.csh
+   804	6:32:14 19 Oct	 2019 cd Diags_NTrS_2012-10/
+   805	6:32:19 19 Oct	 2019 lslt
+   806	7:01:01 19 Oct	 2019 tail obs_diag.out
+   807	7:01:08 19 Oct	 2019 lslt
+   808	7:01:37 19 Oct	 2019 cds run
+   809	8:42:26 19 Oct	 2019 qsur
+   810	8:42:46 19 Oct	 2019 ls -d $pr/$casename/esp/hist/*-10
+   811	22:55:22 19 Oct	 2019 ls1
+   812	22:55:51 19 Oct	 2019 loghist
+   813	22:57:01 19 Oct	 2019 cdc
+   814	23:00:17 19 Oct	 2019 vi repack_st_arch.csh
+   815	23:00:29 19 Oct	 2019 cd
+   816	23:01:10 19 Oct	 2019 qsur
+   817	23:01:14 19 Oct	 2019 vi repack_st_arch.csh
+   818	6:56:51 20 Oct	 2019 ls -lt repack_st_arch.csh
+   819	6:56:58 20 Oct	 2019 qsur
+   820	10:00:18 20 Oct	 2019 cds run
+   821	10:00:23 20 Oct	 2019 ls1
+   822	10:00:46 20 Oct	 2019 lslt
+   823	10:01:00 20 Oct	 2019 cat cesm.log.8853255.chadmin1.ib0.cheyenne.ucar.edu.191019-225923
+   824	10:04:29 20 Oct	 2019 mv cesm.log.8853255.chadmin1.ib0.cheyenne.ucar.edu.191019-225923 ../Cesm.log.saver/
+   825	10:04:33 20 Oct	 2019 cd ../Cesm.log.saver/
+   826	10:05:15 20 Oct	 2019 cat cesm.log.8853255.chadmin1.ib0.cheyenne.ucar.edu.191019-225923 > cesm.log.8853255.chadmin1.ib0.cheyenne.ucar.edu.191019-225923.formatted
+   827	10:05:17 20 Oct	 2019 vi cesm.log.8853255.chadmin1.ib0.cheyenne.ucar.edu.191019-225923.formatted
+   828	10:08:22 20 Oct	 2019 qsur
+   829	10:27:13 20 Oct	 2019 module load gnu python
+   830	10:27:16 20 Oct	 2019 ncar_pylib 20190326
+   831	10:27:20 20 Oct	 2019 globus login
+   832	10:27:28 20 Oct	 2019 deactivate
+   833	10:29:31 20 Oct	 2019 hgrep repack
+   834	12:17:20 20 Oct	 2019 cdc
+   835	12:17:23 20 Oct	 2019 vi repack_st_arch_3657387.eo
+   836	12:17:48 20 Oct	 2019 vi repack_st_arch.csh
+   837	12:18:12 20 Oct	 2019 sbatch repack_st_arch.csh
+   838	12:18:25 20 Oct	 2019 qsur
+   839	12:18:44 20 Oct	 2019 sq
+   840	12:19:35 20 Oct	 2019 man sbatch
+   841	12:19:47 20 Oct	 2019 scancel 3658412
+   842	12:20:37 20 Oct	 2019 squeue | grep raeder
+   843	13:53:10 20 Oct	 2019 lslt
+   844	13:53:26 20 Oct	 2019 vi repack_st_arch_3658412.eo
+   845	13:54:38 20 Oct	 2019 lslt
+   846	13:54:45 20 Oct	 2019 vi repack_st_arch_3658413.eo
+   847	13:57:10 20 Oct	 2019 cat tar_inf_log_2012-10-01-00000.eo
+   848	13:57:50 20 Oct	 2019 ls 2012-10-08-00000/*log*
+   849	13:58:31 20 Oct	 2019 ls ../../run/2012-10-08-00000/cpl_0001.log.8828868.chadmin1.ib0.cheyenne.ucar.edu.191017-083730*
+   850	13:58:53 20 Oct	 2019 ls
+   851	13:59:00 20 Oct	 2019 ls ../../Ce*/2012-10-08-00000/cpl_0001.log.8828868.chadmin1.ib0.cheyenne.ucar.edu.191017-083730
+   852	13:59:04 20 Oct	 2019 ls ../../Ce*/2012-10-08-00000/cpl_0001.log.8828868.chadmin1.ib0.cheyenne.ucar.edu.191017-083730.gz
+   853	14:02:06 20 Oct	 2019 vi repack_st_arch.csh
+   854	14:03:54 20 Oct	 2019 ls 2012-10-01-00000/*dart.r*
+   855	14:06:29 20 Oct	 2019 ls ../../Ce*/cpl_0001.log.8828868.chadmin1.ib0.cheyenne.ucar.edu.191017-083730.gz
+   856	14:06:42 20 Oct	 2019 ls ../../run/cpl_0001.log.8828868.chadmin1.ib0.cheyenne.ucar.edu.191017-083730.gz
+   857	14:07:43 20 Oct	 2019 tar -t -f 2012-10/f.e21.FHIST_BGC.f09_025.CAM6assim.011.infl_log.alltypes.2012-10-01-00000.tar
+   858	14:09:09 20 Oct	 2019 ls 2012-10-01-00000/
+   859	14:16:00 20 Oct	 2019 ls -l 2012=10
+   860	14:16:20 20 Oct	 2019 ls -l 2012-10
+   861	14:16:50 20 Oct	 2019 mv 2012-10 2012-10_aborted
+   862	14:17:36 20 Oct	 2019 ls -l 2012-10-08-00000/*log*
+   863	14:19:54 20 Oct	 2019 ls -l 2012-10-01-00000/*dart.r.*
+   864	14:20:34 20 Oct	 2019 ls -l ../../Cesm.log.saver | grep 'Oct 16 0'
+   865	14:26:59 20 Oct	 2019 cat 2012-10-01-00000/atm_0001.log.8828868.chadmin1.ib0.cheyenne.ucar.edu.191017-083730.gz
+   866	14:27:17 20 Oct	 2019 rm 2012-10-01-00000/*log*
+   867	14:27:21 20 Oct	 2019 foreach l ( `ls  2012-10-08-00000/*log*` )
+   868	14:31:27 20 Oct	 2019 ls -l
+   869	14:31:45 20 Oct	 2019 ls -lt $pr/$casename/cpl/hist/0080
+   870	14:32:54 20 Oct	 2019 ncdump -v time $pr/$casename/cpl/hist/0080/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0080.ha2x1d.2012.nc | less
+   871	14:48:58 20 Oct	 2019 ncdump -v time $pr/$casename/cpl/hist/0080/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0080.ha2x3h.2012.nc | less
+   872	14:49:14 20 Oct	 2019 ncdump -v time $pr/$casename/cpl/hist/0080/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0080.ha2x1h.2012.nc | less
+   873	14:49:41 20 Oct	 2019 lslt
+   874	14:49:58 20 Oct	 2019 vi repack_st_arch_3658413.eo
+   875	14:51:35 20 Oct	 2019 ls 2012-10/*0001*.h*
+   876	14:51:55 20 Oct	 2019 ls 2012-10_aborted/*0001*.h*
+   877	14:52:02 20 Oct	 2019 ls 2012-10_aborted/
+   878	14:53:10 20 Oct	 2019 ls -lt *0001*12-10*
+   879	14:54:12 20 Oct	 2019 ls -lt *0001*ha2x1d.12-10* | less
+   880	14:54:32 20 Oct	 2019 ls -lt *0001*ha2x1d.2012-10* | less
+   881	16:21:17 20 Oct	 2019 vi repack_st_arch.csh
+   882	16:27:15 20 Oct	 2019 ls -lt *0001*ha2x1d.2012-10-03-00000*
+   883	16:27:31 20 Oct	 2019 ls -lt *0001*.2012-10-03-00000*
+   884	16:28:01 20 Oct	 2019 ls -lt
+   885	16:31:14 20 Oct	 2019 ls -l *.eo
+   886	16:31:21 20 Oct	 2019 ls -l *cmd*
+   887	16:32:25 20 Oct	 2019 mkdir Save_archived_2012-10
+   888	16:32:58 20 Oct	 2019 mv f*.h*.nc Save_archived_2012-10
+   889	16:35:30 20 Oct	 2019 ls Save_archived_2012-10/*0001* | less
+   890	16:37:10 20 Oct	 2019 mv Save_archived_2012-10/*2012.nc .
+   891	16:38:37 20 Oct	 2019 hgrep batch
+   892	16:41:18 20 Oct	 2019 less repack_st_arch_3661434.eo
+   893	17:23:15 20 Oct	 2019 lslt
+   894	17:23:25 20 Oct	 2019 vi repack_st_arch_3661434.eo
+   895	17:24:59 20 Oct	 2019 pwd
+   896	17:25:16 20 Oct	 2019 cd $pr/$casename/cpl/hist/0080
+   897	17:25:44 20 Oct	 2019 ncdump -v time f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0080.ha2x1d.2012.nc | less
+   898	17:26:25 20 Oct	 2019 cd -
+   899	17:26:54 20 Oct	 2019 hgrep cds
+   900	17:26:58 20 Oct	 2019 cds archive/rest
+   901	17:27:10 20 Oct	 2019 lslt
+   902	17:27:23 20 Oct	 2019 cat tar_0053_2012-10-01-00000.eo
+   903	17:28:28 20 Oct	 2019 cd ../cpl/hist
+   904	17:28:32 20 Oct	 2019 cd Save_archived_2012-10/
+   905	17:28:38 20 Oct	 2019 ls *0001*
+   906	17:29:42 20 Oct	 2019 rm *.2011-* &
+   907	17:29:58 20 Oct	 2019 lsl *0001*
+   908	17:30:53 20 Oct	 2019 mv Save_archived_2012-10/*2012-10* .
+   909	17:31:26 20 Oct	 2019 cd ../../rest
+   910	17:31:30 20 Oct	 2019 du -sm *
+   911	17:32:09 20 Oct	 2019 rm -rf 2011*
+   912	17:33:40 20 Oct	 2019 vi repack_st_arch.csh
+   913	17:35:48 20 Oct	 2019 ls 2012-10-01-00000/*0078*
+   914	17:36:40 20 Oct	 2019 ls -l 2012-10/*0078*
+   915	17:38:11 20 Oct	 2019 tar -t -f 2012-10
+   916	17:38:18 20 Oct	 2019 tar -t -f 2012-10/f.e21.FHIST_BGC.f09_025.CAM6assim.011.0078.alltypes.2012-10-01-00000.tar
+   917	17:38:42 20 Oct	 2019 ls -l 2012-10-01-00000/*log*
+   918	17:39:13 20 Oct	 2019 tar -t -f 2012-10/f.e21.FHIST_BGC.f09_025.CAM6assim.011.*log*.tar
+   919	17:40:16 20 Oct	 2019 cd 2012-10
+   920	17:41:12 20 Oct	 2019 rm *[0-9].alltypes.*
+   921	17:41:16 20 Oct	 2019 gladequota
+   922	17:42:22 20 Oct	 2019 ls *.eo
+   923	17:42:35 20 Oct	 2019 rm *.eo
+   924	17:42:39 20 Oct	 2019 ls *cmd*
+   925	17:42:51 20 Oct	 2019 cdc
+   926	17:43:23 20 Oct	 2019 sbatch repack_st_arch.csh
+   927	18:16:49 20 Oct	 2019 lslt
+   928	18:16:57 20 Oct	 2019 tail repack_st_arch_3662369.eo
+   929	18:17:06 20 Oct	 2019 less repack_st_arch_3662369.eo
+   930	19:36:47 20 Oct	 2019 squeue | grep raeder
+   931	19:36:53 20 Oct	 2019 lslt
+   932	19:37:01 20 Oct	 2019 vi repack_st_arch_3662369.eo
+   933	19:37:13 20 Oct	 2019 gladequota
+   934	19:37:31 20 Oct	 2019 vi purge.csh
+   935	19:40:11 20 Oct	 2019 cds archive/rest/2012-10
+   936	19:43:04 20 Oct	 2019 ls 2012-10*/*inf*
+   937	19:44:01 20 Oct	 2019 tar -t -f 2012-10_aborted/f.e21.FHIST_BGC.f09_025.CAM6assim.011.infl_log.alltypes.2012-10-01-00000.tar
+   938	19:57:40 20 Oct	 2019 ls 2012-10*/*dart.r*
+   939	19:58:19 20 Oct	 2019 ls 2012-10
+   940	19:59:00 20 Oct	 2019 mv 2012-10 2012-10_members_only
+   941	19:59:07 20 Oct	 2019 mkdir 2012-10
+   942	20:04:33 20 Oct	 2019 ls -lt 2012-10
+   943	20:09:39 20 Oct	 2019 cd 2012-10-08-00000/
+   944	20:09:40 20 Oct	 2019 ls
+   945	20:10:32 20 Oct	 2019 man tar
+   946	20:12:17 20 Oct	 2019 cd ..
+   947	20:14:00 20 Oct	 2019 man tar
+   948	20:15:19 20 Oct	 2019 foreach day ( 08 15 22 29 )
+   949	20:15:51 20 Oct	 2019 lslt 2012-10
+   950	20:16:17 20 Oct	 2019 vi repack_st_arch.csh
+   951	20:17:15 20 Oct	 2019 set project = /glade/p/nsc/ncis0006/Reanalyses
+   952	20:17:52 20 Oct	 2019 set CASE = f.e21.FHIST_BGC.f09_025.CAM6assim.011
+   953	20:19:18 20 Oct	 2019 $w/Exp/$CASE/mv_to_campaign.csh $CASE ${yr_mo} ${local_arch}/rest/$yr_mo ${campaign}/${CASE}/rest
+   954	20:20:18 20 Oct	 2019 $w/Exp/$CASE/mv_to_campaign.csh $CASE ${yr_mo} ${s}/${CASE}/archive/rest/$yr_mo ${campaign}/${CASE}/rest
+   955	20:36:15 20 Oct	 2019 ls -lt $pr/$casename/esp/hist
+   956	20:37:14 20 Oct	 2019 mv $pr/$casename/esp/hist/Diags_NTrS_2012-10 $pr/$casename/esp/hist/2012-10/Diags_NTrS_2012-10.tgz
+   957	20:37:24 20 Oct	 2019 ls -lt $pr/$casename/esp/hist/2012-10
+   958	20:37:31 20 Oct	 2019 ls -lt $pr/$casename/esp/hist/2012-09
+   959	20:38:26 20 Oct	 2019 cd $pr/$casename
+   960	20:38:29 20 Oct	 2019 ls -l {lnd,atm,ice,rof}/hist/0080/*.{clm2,cam,cice,mosart}_*.h*2012*[cz]
+   961	20:41:53 20 Oct	 2019 gladequota
+   962	20:42:06 20 Oct	 2019 hgrep purge
+   963	20:42:23 20 Oct	 2019 ./purge.csh > & purge.2012-10 &
+   964	20:42:47 20 Oct	 2019 gladequota
+   965	20:43:18 20 Oct	 2019 cds archive
+   966	20:43:24 20 Oct	 2019 cd rest
+   967	20:43:27 20 Oct	 2019 du -sm *
+   968	20:45:08 20 Oct	 2019 rm -rf 2012-10*
+   969	20:45:25 20 Oct	 2019 cd ../cpl/hist
+   970	20:45:29 20 Oct	 2019 du -sm .
+   971	20:46:10 20 Oct	 2019 loghist
+   972	20:46:38 20 Oct	 2019 lsDir
+   973	20:47:04 20 Oct	 2019 ls Save_archived_2012-10/*0001*
+   974	20:47:17 20 Oct	 2019 du -sm Save_archived_2012-10/
+   975	20:47:21 20 Oct	 2019 ls Save_archived_2012-10/
+   976	20:47:28 20 Oct	 2019 rmdir Save_archived_2012-10/
+   977	20:47:42 20 Oct	 2019 ls *0001*.hr*
+   978	20:49:49 20 Oct	 2019 cdc
+   979	20:49:58 20 Oct	 2019 vi repack_st_arch.csh
+   980	20:55:04 20 Oct	 2019 cds archive/logs
+   981	20:55:08 20 Oct	 2019 ls list*
+   982	20:55:20 20 Oct	 2019 ls rm*
+   983	20:56:52 20 Oct	 2019 cd ..
+   984	20:56:54 20 Oct	 2019 ls rm*
+   985	20:58:15 20 Oct	 2019 ./purge.csh > ! & purge.2012-10 &
+   986	20:58:37 20 Oct	 2019 ./purge.csh > & ! purge.2012-10 &
+   987	21:02:50 20 Oct	 2019 cds run
+   988	21:02:52 20 Oct	 2019 ls1
+   989	21:08:28 20 Oct	 2019 gladequota
+   990	21:08:42 20 Oct	 2019 cd cpl/hist
+   991	21:09:04 20 Oct	 2019 ls *0001*2012-10*
+   992	21:09:27 20 Oct	 2019 ls *0001*2012-11*
+   993	21:09:53 20 Oct	 2019 loghist
+   994	21:10:27 20 Oct	 2019 cdc
+   995	21:10:52 20 Oct	 2019 history > hist_cleanup_2012-10

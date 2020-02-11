@@ -1,0 +1,5 @@
+f.e21.FHIST_BGC.f09_025.CAM6assim.011.cam_0001.r.2011-08-31-64800.nc
+1 cycles will be distributed among 0 +1 jobs
+Changed run time to 00:20 in env_batch.xml
+case_run.py is linked to
+lrwxrwxrwx 1 raeder p86850054 21 Sep  5 19:54 case_run.py -> case_run_cam+assim.py

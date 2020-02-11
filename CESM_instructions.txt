@@ -1,0 +1,41 @@
+
+-------------------------------------------------------------------------
+Time to check the case.
+
+1)  Scan the output from this setup script for errors and warnings:
+    ERROR, WARNING, 'No such file' (except for MOSART)
+    'File status unknown' can be ignored.
+    'ERROR: cice.buildlib failed' can be ignored, unless you've changed the CICE code
+
+2)  cd /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run
+    Check the files that were staged; follow the links to confirm the data sources.
+    Check the compatibility between them and the namelists and pointer files.
+
+3)  cd /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011
+    Verify the CESM XML settings, especially in env_batch.xml and env_run.xml.
+    ./xmlquery --partial <partial_string_of_interest> 
+    is particularly useful.
+
+4)  The default initial configuration is to assimilate.
+    Verify the /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/input.nml contents.
+    Assimilation can be turned off by
+    ./xmlchange DATA_ASSIMILATION_SCRIPT=/glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/no_assimilate.csh
+    DART can be turned off by
+    ./xmlchange DATA_ASSIMILATION=FALSE
+
+5)  Submit the job (and get mail when it starts and stops):
+    ./case.submit -M begin,end
+
+6)  After the job has run, check to make sure it worked.
+
+7)  If the first cycle generated an ensemble by perturbing a single state,
+    change input.nml as described in the instructions in it,
+    to make cycles 2,...,N use the latest ensemble, unperturbed.
+
+8)  To extend the run in 6 'nhours' steps, use xmlchange to
+    change the CESM runtime variables:
+
+    ./xmlchange DATA_ASSIMILATION_CYCLES= the value you want.
+    ./xmlchange CONTINUE_RUN=TRUE
+    ./xmlchange RESUBMIT= the number of JOBS to run (each JOB performs DATA_ASSIMILATION_CYCLES cycles)
+

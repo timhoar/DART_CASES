@@ -1,0 +1,10 @@
+Successfully cleaned batch script .case.run
+Setting resource.RLIMIT_STACK to -1 from (-1, -1)
+job is case.run USER_REQUESTED_WALLTIME 03:34 USER_REQUESTED_QUEUE regular
+Creating batch scripts
+Writing case.run script from input template /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/config/cesm/machines/template.case.run
+Creating file .case.run
+Writing case.st_archive script from input template /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/config/cesm/machines/template.st_archive
+Creating file case.st_archive
+If an old case build already exists, might want to run 'case.build --clean' before building
+You can now run './preview_run' to get more info on how your case will be run

@@ -1,0 +1,47 @@
+      module command is /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python purge 
+      module command is /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python load ncarenv/1.2 intel/17.0.1 esmf_libs mkl esmf-7.1.0r-defio-mpi-O mpt/2.19 netcdf-mpi/4.6.1 pnetcdf/1.11.0 ncarcompilers/0.4.1
+      Setting Environment OMP_STACKSIZE=256M
+      Setting Environment TMPDIR=/glade/scratch/raeder
+      Setting Environment MPI_TYPE_DEPTH=16
+      Setting Environment MPI_IB_CONGESTED=1
+      Setting Environment MPI_LAUNCH_TIMEOUT=50
+      Setting Environment MPI_IB_CONGEST=1
+      Setting Environment MPI_VERBOSE=1
+      Setting Environment MPI_VERBOSE2=1
+      Setting Environment MPI_GROUP_MAX=1024
+      Setting Environment MPI_COMM_MAX=16383
+      module command is /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python purge 
+      module command is /glade/u/apps/ch/opt/lmod/7.5.3/lmod/lmod/libexec/lmod python load ncarenv/1.2 intel/17.0.1 esmf_libs mkl esmf-7.1.0r-defio-mpi-O mpt/2.19 netcdf-mpi/4.6.1 pnetcdf/1.11.0 ncarcompilers/0.4.1
+      Setting Environment OMP_STACKSIZE=256M
+      Setting Environment TMPDIR=/glade/scratch/raeder
+      Setting Environment MPI_TYPE_DEPTH=16
+      Setting Environment MPI_IB_CONGESTED=1
+      Setting Environment MPI_LAUNCH_TIMEOUT=50
+      Setting Environment MPI_IB_CONGEST=1
+      Setting Environment MPI_VERBOSE=1
+      Setting Environment MPI_VERBOSE2=1
+      Setting Environment MPI_GROUP_MAX=1024
+      Setting Environment MPI_COMM_MAX=16383
+      Setting Environment TMPDIR=/glade/scratch/raeder
+      Setting Environment MPI_USE_ARRAY=false
+CASE INFO:
+  nodes: 240
+  total tasks: 8640
+  tasks per node: 36
+  thread count: 1
+
+BATCH INFO:
+  FOR JOB: case.run
+    ENV:
+      Setting Environment OMP_NUM_THREADS=1
+    SUBMIT CMD:
+      qsub -q regular -l walltime=03:34:00 -A NCIS0006 -v ARGS_FOR_SCRIPT='--resubmit' .case.run
+
+  FOR JOB: case.st_archive
+    ENV:
+      Setting Environment OMP_NUM_THREADS=1
+    SUBMIT CMD:
+      qsub -q share -l walltime=1:00:00 -A NCIS0006  -W depend=afterok:0 -v ARGS_FOR_SCRIPT='--resubmit' case.st_archive
+
+MPIRUN:
+  mpiexec_mpt -p "%g:"  -np 8640  omplace -tm open64  /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/bld/cesm.exe  >> cesm.log.$LID 2>&1 

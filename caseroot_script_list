@@ -1,0 +1,115 @@
+   not_in_DART; list of files created in the context of reviewing in 2020-1-31
+
+   assim.csh.added
+   assimilate.csh
+   assimilate.csh.template
+   assim_no_debug4ben.csh
+   assim_post_filter.csh
+   backup_manually.csh
+   bias_from_obs_seq_output.csh
+   call_mv_to_cs.csh
+   chng_hybrid2branch.csh
+   compress_clm_hist_3755718.eo
+   compress.csh
+   compress.csh_proj2camp
+   compress_hist.csh
+   compress_hist.out
+   compress.out
+   compress_run_hist.out
+   copy_atts.csh
+   DART_config
+   diags_batch.csh
+   diags_rean.csh
+   diff.csh
+   fix_yearly_atts.csh
+   launch_cf.sh
+   mover.csh
+   mover_proj2scratch.csh
+   mv_2011-05_to_CS_intera.out
+   mv_2012-09-17-00000.csh
+   mv_to_campaign.csh
+   no_assimilate.csh
+   pre_purge_check.csh
+   purge.csh
+   repack_hwm.csh
+   repack_project.csh
+   repack_st_arch.csh
+   repack_st_arch.csh_proj2camp
+   repack_st_arch-thru2013-12.csh
+   repack_st_arch_tidy_mess.csh
+   setup_advanced_Rean.original
+   setup-tester
+   stage_cesm_files
+   stage_cesm_files.template
+   stage_dart_files
+   tar_obs_seq_qcmd.csh
+   update_dart_namelists
+
+
+svn contents:
+---------------
+Update these from $caseroot?
+ y = files in svn shell_scripts that might need updating.
+ n = the svn shell_scripts versions are newer than $caseroot; 
+     don't cp to shell_scripts
+yn assimilate.csh.template
+yn compress.csh
+yn launch_cf.sh
+yn mv_to_campaign.csh
+yn purge.csh
+yn repack_st_arch.csh
+
+   DART_config.template
+   no_assimilate.csh.template
+   setup_advanced
+   setup_hybrid
+   setup_single_from_ens
+   spinup_single
+   standalone.pbs
+   submit3
+   test_assimilate.csh
+
+Don't update these
+   bash_if.sh
+   Builds
+   commit_2019-7-5
+   diags_batch.csh
+   diags_rean.csh
+   launch_cf_slurm.sh
+   Makefile_IMPI_not_MPT2
+   mv_to_campaign.csh.succeeded
+   mv_to_camp_stor_RDA-straw.csh
+   obs_diags.csh
+   obs_diags.inter
+   obs_diags.out1
+   obs_diags.out2
+   obs_seq_tool_series.csh
+   obs_to_two_experiments.csh
+   pre-merge_to_trunk.comment
+   Rean_helpers
+   repack_project.csh
+   repack_st_arch.csh.weak_decompress_forcing
+   review_notes
+   See_sst.bld1
+   Set_svn_properties.csh
+   setup_advanced.bu
+   setup_advanced_Rean
+   setup_advanced_Rean_2017
+   setup_CESM2_1_80
+   setup_hybrid_PR
+   setup_single_from_ens.bu
+   spinup_single.bu
+   spinup_single_test
+   status_pre_commit
+   status-v_2019-3-18
+   status-v_2019-3-21
+   status-v_2019-3-22
+   status-v_2019-5-4
+   Stream_sst2.bld1
+   Stream_sst3.bld1
+   Stream_sst.bld1
+   submit
+   submit2
+   submit_no_buildnml.csh
+   test_assimilate.log
+   Wall_timer

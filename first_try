@@ -1,0 +1,208 @@
+f.e21.FHIST_BGC.f09_025.CAM6assim.011.cam_0001.r.2011-08-31-64800.nc
+1 cycles will be distributed among 0 +1 jobs
+Changed run time to 00:20 in env_batch.xml
+case_run.py is linked to
+lrwxrwxrwx 1 raeder p86850054 21 Sep  5 19:55 case_run.py -> case_run_cam+assim.py
+File /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/LockedFiles/env_batch.xml has been modified
+
+env_batch.xml appears to have changed, regenerating batch scripts
+manual edits to these file will be lost!
+
+  found difference in JOB_WALLCLOCK_TIME : case '00:20:00' locked '00:50:00'
+  found difference in USER_REQUESTED_WALLTIME : case '00:20' locked '00:50'
+Creating batch scripts
+Writing case.run script from input template /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/config/cesm/machines/template.case.run
+Creating file .case.run
+Writing case.st_archive script from input template /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/config/cesm/machines/template.st_archive
+Creating file case.st_archive
+Setting resource.RLIMIT_STACK to -1 from (-1, -1)
+GET_REFCASE is false, the user is expected to stage the refcase to the run directory.
+Creating component namelists
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/components/cam//cime_config/buildnml
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0001 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0002 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0003 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0004 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0005 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0006 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0007 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0008 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0009 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0010 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0011 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0012 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0013 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0014 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0015 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0016 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0017 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0018 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0019 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0020 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0021 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0022 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0023 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0024 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0025 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0026 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0027 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0028 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0029 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0030 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0031 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0032 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0033 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0034 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0035 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0036 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0037 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0038 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0039 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0040 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0041 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0042 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0043 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0044 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0045 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0046 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0047 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0048 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0049 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0050 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0051 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0052 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0053 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0054 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0055 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0056 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0057 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0058 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0059 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0060 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0061 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0062 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0063 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0064 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0065 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0066 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0067 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0068 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0069 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0070 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0071 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0072 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0073 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0074 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0075 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0076 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0077 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0078 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0079 
+Rean_spinup_2010.cam.i.2011-01-01-00000.nc is being used for ncdata
+CAM namelist copy: file1 /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/Buildconf/camconf/atm_in file2 /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run/atm_in_0080 
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/components/clm//cime_config/buildnml
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/components/cice//cime_config/buildnml
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/src/components/data_comps/docn/cime_config/buildnml
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/components/mosart//cime_config/buildnml
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/src/components/stub_comps/sglc/cime_config/buildnml
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/src/components/stub_comps/swav/cime_config/buildnml
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/src/components/stub_comps/sesp/cime_config/buildnml
+   Calling /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/src/drivers/mct/cime_config/buildnml
+   NOTE: ignoring setting of rof2ocn_liq_rmapname=idmap in seq_maps.rc
+   NOTE: ignoring setting of rof2ocn_ice_rmapname=idmap in seq_maps.rc
+Finished creating component namelists
+Checking that inputdata is available as part of case submission
+Setting resource.RLIMIT_STACK to -1 from (-1, -1)
+Loading input file list: 'Buildconf/clm.input_data_list'
+Loading input file list: 'Buildconf/cpl.input_data_list'
+Loading input file list: 'Buildconf/cice.input_data_list'
+Loading input file list: 'Buildconf/docn.input_data_list'
+Loading input file list: 'Buildconf/mosart.input_data_list'
+Loading input file list: 'Buildconf/cam.input_data_list'
+GET_REFCASE is false, the user is expected to stage the refcase to the run directory.
+Check case OK
+Data Assimilation enabled using script /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011/assimilate.csh with 1 cycles
+submit_jobs case.run
+Submit job case.run
+Submitting job script qsub -q premium -l walltime=00:20:00 -A NCIS0006 -m be -v ARGS_FOR_SCRIPT='--resubmit --skip-preview-namelist' .case.run
+Submitted job id is 8116366.chadmin1.ib0.cheyenne.ucar.edu
+Submitted job case.run with id 8116366.chadmin1.ib0.cheyenne.ucar.edu

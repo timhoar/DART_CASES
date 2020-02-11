@@ -1,0 +1,20 @@
+ 
+Location for history is /glade/p/nsc/ncis0006/Reanalyses/f.e21.FHIST_BGC.f09_025.CAM6assim.011/cpl/hist
+0001/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0001.ha2x1d.2011.nc.gz
+0001/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0001.ha2x1h.2011.nc.gz
+0001/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0001.ha2x1hi.2011.nc.gz
+0001/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0001.ha2x3h.2011.nc.gz
+0001/f.e21.FHIST_BGC.f09_025.CAM6assim.011.cpl_0001.hr2x.2011.nc.gz
+Now using NPL version 20190326
+Use deactivate to remove NPL from environment
+EP_SRC = d33b3614-6d04-11e5-ba46-22000b92c6ec
+EP_CS = 6b5ab960-7bbf-11e8-9450-0a6d4e044368
+Endpoint d33b3614-6d04-11e5-ba46-22000b92c6ec is activated
+Endpoint 6b5ab960-7bbf-11e8-9450-0a6d4e044368 is activated
+
+Transfer is asynchronous.
+IF successfully started, you will receive email when it is complete.
+CHECK /glade/p/nsc/ncis0006/Reanalyses/f.e21.FHIST_BGC.f09_025.CAM6assim.011/cpl/hist/globus__223116.log.
+
+Ending script to copy the contents of /glade/p/nsc/ncis0006/Reanalyses/f.e21.FHIST_BGC.f09_025.CAM6assim.011/cpl/hist/
+to campaign storage at Tue Jul 30 09:30:53 MDT 2019

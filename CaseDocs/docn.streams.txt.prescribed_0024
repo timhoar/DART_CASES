@@ -1,0 +1,33 @@
+
+<dataSource>
+   GENERIC
+</dataSource>
+<domainInfo>
+  <variableNames>
+     time    time
+        xc      lon
+        yc      lat
+        area    area
+        mask    mask
+  </variableNames>
+  <filePath>
+     /glade/work/raeder/Models/CAM_init/SST
+  </filePath>
+  <fileNames>
+     domain.ocn.d025.120821.nc
+  </fileNames>
+</domainInfo>
+<fieldInfo>
+   <variableNames>
+     SST_cpl t
+   </variableNames>
+   <filePath>
+     /glade/work/raeder/Models/CAM_init/SST
+   </filePath>
+   <fileNames>
+    avhrr-only-v2.2017_filled_c191219.nc
+   </fileNames>
+   <offset>
+      0
+   </offset>
+</fieldInfo>

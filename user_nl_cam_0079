@@ -1,0 +1,45 @@
+! Users should add all user specific namelist changes below in the form of 
+! namelist_var = new_namelist_value 
+ 
+ inithist      = 'ENDOFRUN'
+ ncdata        = 'cam_initial_0079.nc'
+ empty_htapes  = .true. 
+ fincl1        = 'PHIS:I' 
+ nhtfrq        = -6 
+ ext_frc_specifier = 
+  'H2O -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/elev/H2O_emission_CH4_oxidationx2_elev_1850-2100_CCMI_RCP8_5_c160219.nc'
+  'num_a1 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_so4_a1_anthro-ene_vertical_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'so4_a1 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_so4_a1_anthro-ene_vertical_mol_175001-210012_0.9x1.25_c20181024.nc'
+ srf_emis_specifier =
+  'bc_a4 ->  /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_bc_a4_anthro_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'bc_a4 ->  /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_bc_a4_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'DMS ->    /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_DMS_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'DMS ->    /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-SSP_DMS_other_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'num_a1 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_so4_a1_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'num_a1 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_so4_a1_anthro-ag-ship_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'num_a2 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_so4_a2_anthro-res_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'num_a4 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_bc_a4_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'num_a4 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_bc_a4_anthro_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'num_a4 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_pom_a4_anthro_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'num_a4 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_num_pom_a4_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'pom_a4 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_pom_a4_anthro_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'pom_a4 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_pom_a4_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'SO2 ->    /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_SO2_anthro-ag-ship-res_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'SO2 ->    /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_SO2_anthro-ene_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'SO2 ->    /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_SO2_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'so4_a1 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_so4_a1_anthro-ag-ship_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'so4_a2 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_so4_a2_anthro-res_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'SOAG ->   /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_SOAGx1.5_anthro_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'SOAG ->   /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_SOAGx1.5_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'SOAG ->   /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_SOAGx1.5_biogenic_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+  'so4_a1 -> /gpfs/fs1/p/acom/acom-climate/cmip6inputs/emissions_ssp119/emissions-cmip6-ScenarioMIP_IAMC-IMAGE-ssp119-1-1_so4_a1_bb_surface_mol_175001-210012_0.9x1.25_c20181024.nc'
+ prescribed_ozone_type         = 'CYCLICAL'
+ prescribed_ozone_cycle_yr     = 2014
+ prescribed_strataero_type     = 'CYCLICAL'
+ prescribed_strataero_cycle_yr = 2014
+ tracer_cnst_file = 'tracer_cnst_halons_WACCM6_3Dmonthly_L70_1975-2014_c180216.nc'
+ tracer_cnst_type          = 'CYCLICAL'
+ tracer_cnst_cycle_yr      = 2014
+ flbc_file  = '/glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_17500116-20150116_CMIP6_0p5degLat_c180905.nc' 
+ flbc_type      = 'CYCLICAL'
+ flbc_cycle_yr  = 2014
