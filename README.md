@@ -24,7 +24,7 @@ The strategy is:
 8. add files to the local git repository - this should be on the branch that matches your CASE. You can confirm with _git status_
 9. commit them to the local git repository
 10. push the contents of the local git repository back to GitHub. When you cloned the repository in Step 2,
-you automatically get a _remote_ called _origin_ but the GitHub repository has no knowledge of your new branch, so there is a special syntax for that.
+you automatically get a _remote_ called _origin_ but the GitHub repository has no knowledge of your new branch, so there is a special syntax to push the new branch to the GitHub repository.
 11. delete **backup** - or at least make it readonly to prevent you from actually using it.
 
 ```
