@@ -1,5 +1,9 @@
 #!/bin/tcsh
-
+#
+# DART software - Copyright UCAR. This open source software is provided
+# by UCAR, "as is", without charge, subject to all terms of use at
+# http://www.image.ucar.edu/DAReS/DART/DART_download
+#
 #PBS  -N diags_rean
 #PBS  -A NCIS0006
 #PBS  -q share
@@ -17,17 +21,6 @@
 #PBS  -o diags_rean.eo
 #PBS  -j oe 
 #--------------------------------------------
-
-#
-# Data Assimilation Research Testbed -- DART
-# Copyright 2004-2006, Data Assimilation Research Section
-# University Corporation for Atmospheric Research
-# Licensed under the GPL -- www.gpl.org/licenses/gpl.html
-#
-# <next three lines automatically updated by CVS, do not edit>
-# $Id: diags.csh,v 1.1 2006/12/28 20:22:17 thoar Exp $
-# $Source: /home/thoar/CVS.REPOS/DART/models/cam/shell_scripts/diags_rean.csh,v $
-# $Name:  $
 
 # obs_diag can now take a namelist argument that specifies a file
 # containing a list of obs_seq filenames.
@@ -53,7 +46,7 @@ endif
 
 # DART source directory on this machine
 # These things should be gathered from env_*.xml files in CASEROOT.
-set DART = ~/DART/reanalysis
+set DART = ~/DART/reanalysis_git
 set cam = 'cam-fv'
 
 # Use big endian obs_diag for output from IBM
@@ -166,6 +159,5 @@ if (-f $obs_seq_tar) then
 endif
 rm *obs_seq*${year}-${mm}*
 
+exit 0
 
-
-exit
