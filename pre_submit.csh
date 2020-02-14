@@ -1,10 +1,5 @@
 #!/bin/tcsh -f
 
-# > > > Add code to check whether start_ end_ years are different
-#       and whether user_nl_docn_# have taxmode turned on or off?
-#       I want it turned on at the start, when the years are the same,
-#        and off at the end when they're different
-
 # Script to submit a variety of jobs:
 #    full cycle(s)
 #    assim only
@@ -22,26 +17,28 @@ if ($#argv == 0) then
    echo "       cycles_per_job: The number of jobs will be calculated from the dates"
    echo "                       Set to 1 for assimilation only jobs."
    echo "       If 'queue' is omitted, the wall clock will be calculated, then exit"
-   exit
+   exit 1
 endif
 
 set first_date     = $1
 set last_date      = $2
 set cycles_per_job = $3
 
+# TJH : will this script exit if xmlquery is not available? i.e. not in CASEROOT?
 set all_inst = `./xmlquery NINST --value`
 set parts = `echo $all_inst[1] | sed -e "s#'# #g;s#:# #"`
 set num_inst = $parts[3]
 setenv case_run_dir `./xmlquery RUNDIR --value`
 set case_py_dir = '/glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/scripts/lib/CIME/case'
 
+# TJH : not sure why this check is needed.
 # Check whether there are too many cesm.log files in rundir.
 set num_logs = `ls -1 ${case_run_dir}/cesm.log* | wc -l`
 
 if ($first_date == $last_date && $num_logs > 3 || \
     $first_date != $last_date && $num_logs > 2 ) then
    echo "ERROR: too many cesm.log files in $case_run_dir; remove the extraneous"
-   exit
+   exit 2
 endif
 
 # Make sure that requested initial date is what CAM will use.
@@ -52,7 +49,7 @@ if (-f ${case_run_dir}/rpointer.atm_0001) then
       sed -e "s#NO-DATE-YET#$first_date#" stage_cesm_files.template >! stage_cesm_files
       if ($status != 0) then
          echo "ERROR: rpointer.atm_0001 has the wrong date, but creating stage_cesm_files failed"
-         exit
+         exit 3
       endif
       echo "Running stage_cesm_files for $first_date"
       chmod 755 stage_cesm_files
@@ -89,47 +86,40 @@ if (($end[4] < $start[4] && $end[4] != '00000') || \
    echo "ERROR: submit requires an integral number of days "
    echo "       or starting and ending on the same day"
    echo "       or ending on 00000 of a future day"
-   exit
+   exit 4
 endif
 
 # Make sure that SST start and align years match this forecast
-# This doesn't work for a stream of SST files.
-# ./xmlchange SSTICE_YEAR_ALIGN=$start[1]
-# ./xmlchange SSTICE_YEAR_START=$start[1]
-# ./xmlchange SSTICE_YEAR_end=$end[1]
-# Instead, the user_nl_docn_#### files need to be modified.
-set line = `grep -m 1 'streams =' user_nl_docn_0001` 
-if ($status != 0) then
-   echo "user_nl_docn has no 'streams =' in it"
-   exit
+
+set year_align = `./xmlquery --val SSTICE_YEAR_ALIGN`
+set year_start = `./xmlquery --val SSTICE_YEAR_START`
+
+if ($year_align != $year_start) then
+   echo "SSTICE_YEAR_ALIGN $year_align /= $year_start SSTICE_YEAR_START"
+   echo "These should be identical for proper behavior."
+   exit 5
 endif
 
-# If the year in the file is not the hindcast start year,
-# replace it with the start year.
-# ? ? ? DON'T do this, if the SSTICE_YEAR* refer to the data STREAM,
-#       instead of the data FILE.
-# grep -m 1 'streams =' user_nl_docn_0001 | grep $start[1] >& /dev/null
-# if ($line[4] != $start[1]) then
-#    set num_inst = `./xmlquery NINST --value`
-#    set i = 1
-#    while ($i <= $num_inst)
-#       set fname = `printf user_nl_docn_%04d $i`
-#       mv $fname temp_nml
-#       sed -e "s#$line[4]#$start[1]#" temp_nml > $fname
-#       @ i++
-#    end
-# endif
-# 
 # Make sure docn will exit if the hindcast span is not in the data file.
+# The only way to specify the taxmode is via the user_nl_docn_xxxx file
+# for every instance. If the 'streams' variable is NOT present in the 
+# user_nl_docn_xxxx file, the values of 
+# SSTICE_YEAR_ALIGN, SSTICE_YEAR_START, SSTICE_YEAR_END are used.
+#
+# It seems that SSTICE_YEAR_ALIGN, SSTICE_YEAR_START, SSTICE_YEAR_END
+# are always used for the ice_in_xxxx namelists and that the entire
+# ice coverage timeseries must be in a single file specified 
+# by &ice_prescribed_nml:stream_fldfilename   There also does not
+# appear to be a way to specify taxmode for ice.
+
 set sst_use = `grep taxmode user_nl_docn_0001`
 echo "$sst_use"
 set sst_mode = `echo $sst_use[3] | sed -e 's#"##g'`
 echo "sst_mode is $sst_mode"
 if ($sst_mode != limit) then
-   echo 'In user_nl_docn* taxmode should be "limit"'
-   exit
+   echo 'In user_nl_docn* taxmode MUST be "limit"'
+   exit 6
 endif
-
 
 # Turn off short term archiver for the new month,
 # after it was activated for the last job of a month.
@@ -143,7 +133,7 @@ if ($months > 0) @ cycles = $cycles + ( $days_in_mo[$start[2]] * 4 )
 @ resubmissions = ( $cycles / $cycles_per_job ) - 1
 if ($resubmissions < 0 && $first_date != $last_date ) then
    echo "ERROR: resubmissions < 0, so cycles_per_job is probably too big"
-   exit 
+   exit 7
 endif
 ./xmlchange DATA_ASSIMILATION_CYCLES=${cycles_per_job},RESUBMIT=${resubmissions}
 echo "$cycles cycles will be distributed among $resubmissions +1 jobs"
@@ -159,11 +149,11 @@ echo "Changing run time to $wall_time in env_batch.xml"
 
 if ($#argv == 3) then
    echo "Seeing if time span will fit in 12:00:00"
-   exit 
+   exit 7
 endif
 if ($job_minutes > 720) then
-   echo "ERROR: too many cycles requested.  Limit wall closk is 12:00:00"
-   exit
+   echo "ERROR: too many cycles requested.  Limit wall clock is 12:00:00"
+   exit 7
 endif
 
 set queue = $4
@@ -179,7 +169,7 @@ if (-l case_run.py) then
    rm case_run.py
 else
    echo 'ERROR: case_run.py is not a link.  Make it one'
-   exit
+   exit 8
 endif
 
 echo "Comparing dates for linking"
@@ -190,7 +180,7 @@ if ("$first_date" == "$last_date" ) then
    echo "Checking numbers of files " $init_files[1] $num_inst
    if ( $init_files[1] != $num_inst ) then
       echo "ERROR: the forecast didn't finish; not enough files in cam_init_files"
-      exit
+      exit 9
    endif
 else
    # Hindcast + assimilation; link the right version to the expected name.
@@ -204,5 +194,5 @@ cd -
 echo "Actually submit the job using"
 echo "./case.submit -M begin,end --skip-preview-namelist"
 
-exit
+exit 0
 
