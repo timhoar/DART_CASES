@@ -1,5 +1,11 @@
 #!/bin/tcsh
 
+# DART software - Copyright UCAR. This open source software is provided
+# by UCAR, "as is", without charge, subject to all terms of use at
+# http://www.image.ucar.edu/DAReS/DART/DART_download
+#
+# $Id$
+#
 # Display the destination files from repack_st_arch.csh.
 # This can't be rolled into repack_st_arch.csh
 # because that submits globus transfer jobs
@@ -44,3 +50,8 @@ ls -l ${csdir}/${casename}/atm/hist/${ym}
 echo "\n DART log files in ${csdir}/${casename}/logs/${ym}:"
 ls -l ${csdir}/${casename}/logs/${ym}
 
+# <next few lines under version control, do not edit>
+# $URL$
+# $Id$
+# $Revision$
+# $Date$

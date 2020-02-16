@@ -4,7 +4,7 @@
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
 
-# DART $Id: repack_st_arch.csh 13197 2019-07-17 15:12:56Z raeder@ucar.edu $
+# $Id:$
 
 #==========================================================================
 
@@ -18,6 +18,11 @@
 # Both destinations take time.  They are actually copies.
 
 # >>> Run st_archive and obs_diag before running this script.      <<<
+# >>> Check that there's enough disk space.                        <<<
+#     It needs 1 Tb more than current usage.                       <<<
+#     That's assuming that processing the cpl hist files is first, <<<
+#     after which lots of space is freed up.  If it's not,         <<<
+#     the lnd history files needs almost 3 Tb additional space.    <<<
 # >>> Log in to globus (see mv_to_campaign.csh for instructions).  <<<
 # >>> From a casper window (but not 'ssh'ed to data-access.ucar.edu)
 #     submit this script from the CESM CASEROOT directory.         <<<
@@ -814,11 +819,14 @@ if ($do_state_space == true) then
    ${CASEROOT}/mv_to_campaign.csh $CASE ${yr_mo} ${DOUT_S_ROOT}/esp/hist/${yr_mo}  \
                                   ${campaign}/${CASE}/esp/hist
  
- #    + atm/hist/*$inst.e.$stages_except_output
-# >>>> Expand this description
+# The ensemble means are archived every 6 hours, because they're useful and small.
+# It also may be useful to have some complete ensembles of model states,
+# so those are saved less often (weekly, plus some others sneak in).
+# This section archives the ensemble.  
+# The members also have a different "file type" than the means
+# and are archived to atm/hist, instead of esp/hist
    cd ${DOUT_S_ROOT}/atm/hist
    
-   # Archive the members, which are here and not in esp/hist (where the means are)
    set files = `ls ${CASE}.cam_0001.e.$stages_all[1].${yr_mo}*`
    echo "Files from which atm $stages_all[1] allinst dates will be gathered:"
    echo "  $files"
@@ -916,7 +924,7 @@ endif
 exit 0
 #==========================================================================
 # <next few lines under version control, do not edit>
-# $URL: https://svn-dares-dart.cgd.ucar.edu/DART/branches/reanalysis/models/cam-fv/shell_scripts/cesm2_1/repack_st_arch.csh $
-# $Revision: 13197 $
-# $Date: 2019-07-17 09:12:56 -0600 (Wed, 17 Jul 2019) $
-                                                              
+# $URL$
+# $Id$
+# $Revision$
+# $Date$
