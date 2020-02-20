@@ -1,5 +1,11 @@
 #!/bin/tcsh
 #
+# DART software - Copyright UCAR. This open source software is provided
+# by UCAR, "as is", without charge, subject to all terms of use at
+# http://www.image.ucar.edu/DAReS/DART/DART_download
+#
+# $Id$
+#
 # Compress just the history files from all of the components,
 # one type (h0,...) at a time, which limits the PEs needed
 # to the size of the ensemble.
@@ -190,3 +196,9 @@ foreach type ( $types )
 end
 
 exit 0
+
+# <next few lines under version control, do not edit>
+# $URL$
+# $Id$
+# $Revision$
+# $Date$

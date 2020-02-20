@@ -1,25 +1,4 @@
-assimilate.csh; export changes to assimilate.csh.template
-   They're only launch error debugging statements.
 
-Ordered by priority to review, commit:
-   pre_purge_check.csh
-   bias_from_obs_seq_output.csh
-   chng_hybrid2branch.csh
-   compress_hist.csh
-   repack_hwm.csh
-   fix_yearly_atts.csh
-   assim_post_filter.csh
-   backup_manually.csh
-
-repack_st_arch_tidy_mess.csh
-mover_proj2scratch.csh
-mover.csh
-repack_st_arch-thru2013-12.csh
-copy_atts.csh
-compress_cs.csh
-mv_2012-09-17-00000.csh
-call_mv_to_cs.csh
-tar_obs_seq_qcmd.csh
-assim.csh
-no_assimilate.csh
-
+assimilate.csh
+assim_post_filter.csh
+backup_manually.csh

@@ -3,12 +3,11 @@
 # DART software - Copyright UCAR. This open source software is provided
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
-#
-# DART $Id: mv_to_campaign.csh 13191 2019-07-09 22:15:00Z raeder@ucar.edu $
 
+# $Id$
 
 # Script to send output from a CAM+DART assimilation,
-# especially the Reanalysis project (2019), to Campaign storage.
+# especially the Reanalysis project (2019), to Campaign Storage.
 # >>> Before running this script:
 #     1) (re)package the files into a directory containing only files to be archived.
 #        The final subdirectory is often a CESM style date string; YYYY-MM-DD-SSSSS
@@ -105,19 +104,8 @@ module load gnu python
 # for the version given as the argument (no arg = use default
 # which doesn't work 2019-6-21).
 # This command activates the 'globus' command, used below.
-if ($?PBS_O_WORKDIR) then
-   # Cheyenne 2019-7-30
-   ncar_pylib 20190627
-else if ($?SLURM_SUBMIT_DIR) then
-   # Casper < and > 2019-7-30
-   ncar_pylib 20190326
-else
-   # Use the default if this job is submitted interactively.
-   ncar_pylib ''
-endif
-
-# or 21090724?
-# ncar_pylib    Doesn't work on batch nodes, but does on login nodes.
+ncar_pylib 20190326
+# ncar_pylib 
 
 # Retrieve endpoint IDs and store them as variables using globus.
 # --filter-owner-id not documented.
@@ -198,8 +186,9 @@ echo "to campaign storage at `date`"
 
 exit 0
 
-# <next few lines under version control, do not edit>
-# $URL: https://svn-dares-dart.cgd.ucar.edu/DART/branches/reanalysis/models/cam-fv/shell_scripts/cesm2_1/mv_to_campaign.csh $
-# $Revision: 13191 $
-# $Date: 2019-07-09 16:15:00 -0600 (Tue, 09 Jul 2019) $
 
+# <next few lines under version control, do not edit>
+# $URL$
+# $Id$
+# $Revision$
+# $Date$

@@ -1,6 +1,11 @@
 #!/bin/tcsh -f
-
-# Script to submit a variety of jobs:
+#
+# DART software - Copyright UCAR. This open source software is provided
+# by UCAR, "as is", without charge, subject to all terms of use at
+# http://www.image.ucar.edu/DAReS/DART/DART_download
+#
+# Script to set up the submission of a variety of jobs:
+#
 #    full cycle(s)
 #    assim only
 #    flexible numbers of cycles/job and resubmissions
@@ -10,7 +15,7 @@
 #    
 # Run in $CASEROOT
 
-if ($#argv == 0) then
+if ($#argv != 4) then
    echo "Usage: submit first_date last_date cycles_per_job queue"
    echo "       first_date, last_date = YYYY-MM-DD-SSSSS"
    echo "       first_date = last_date -> assimilation only."
@@ -23,6 +28,8 @@ endif
 set first_date     = $1
 set last_date      = $2
 set cycles_per_job = $3
+set queue          = $4
+
 
 # TJH : will this script exit if xmlquery is not available? i.e. not in CASEROOT?
 set all_inst = `./xmlquery NINST --value`
@@ -113,9 +120,9 @@ endif
 # appear to be a way to specify taxmode for ice.
 
 set sst_use = `grep taxmode user_nl_docn_0001`
-echo "$sst_use"
 set sst_mode = `echo $sst_use[3] | sed -e 's#"##g'`
-echo "sst_mode is $sst_mode"
+# echo "$sst_use"
+# echo "sst_mode is $sst_mode"
 if ($sst_mode != limit) then
    echo 'In user_nl_docn* taxmode MUST be "limit"'
    exit 6
@@ -141,6 +148,7 @@ echo "$cycles cycles will be distributed among $resubmissions +1 jobs"
 # 10 minutes is what's needed for the first cycle,
 # even if cycles = 0 for an assimilation only job,
 # but later cycles need more.  It doubles in ~60 cycles.
+# >>> This may be fixed with Brian Dobbins > remove the nonlinear term.
 @ job_minutes = 10 + ( $cycles_per_job * ( 10 + (( $cycles_per_job * 10) / 70 )))
 @ wall_hours  = $job_minutes / 60
 @ wall_mins   = $job_minutes % 60
@@ -155,8 +163,6 @@ if ($job_minutes > 720) then
    echo "ERROR: too many cycles requested.  Limit wall clock is 12:00:00"
    exit 7
 endif
-
-set queue = $4
 
 ./xmlchange --subgroup case.run --id JOB_WALLCLOCK_TIME      --val ${wall_time}:00
 ./xmlchange --subgroup case.run --id USER_REQUESTED_WALLTIME --val ${wall_time}
@@ -191,8 +197,13 @@ ls -l case_run.py
 cd -
 
 # Echo the submit command, without generating new ${comp}_in_#### files.
-echo "Actually submit the job using"
+echo "Now submit the job using"
 echo "./case.submit -M begin,end --skip-preview-namelist"
 
 exit 0
 
+# <next few lines under version control, do not edit>
+# $URL$
+# $Id$
+# $Revision$
+# $Date$

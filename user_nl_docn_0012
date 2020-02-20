@@ -13,3 +13,4 @@
 ! As an example, to modify docn.streams.txt.prescribed, place the modified
 ! version in $CASEROOT with the name user_docn.streams.txt.prescribed
 !------------------------------------------------------------------------
+  taxmode = "limit"

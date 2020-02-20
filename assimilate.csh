@@ -209,12 +209,15 @@ endif
 # We need to know the names of the current cesm.log files - one log file is created
 # by each CESM model advance.
 
+# How long does this listing take?
+date --rfc-3339=ns
 set log_list = `${LIST} -t cesm.log.*`
 
 echo "most recent log is $log_list[1]"
 echo "oldest      log is $log_list[$#log_list]"
 echo "entire log list is $log_list"
 echo " "
+date --rfc-3339=ns
 
 # ==============================================================================
 # Block 2: Populate a run-time directory with the input needed to run DART.
@@ -339,8 +342,10 @@ if ($#log_list >= 3) then
    # may or may not have an 'instance' string in them, depending on whether
    # or not you are using the multi-driver or not, so we must check for both.
 
+   echo "Gathering re_list at " `date --rfc-3339=ns`
    set re_list = `${LIST} -t *cpl.r.*`
    if ($#re_list == 0) set re_list = `${LIST} -t *cpl_0001.r.*`
+   echo "finished gathering re_list at " `date --rfc-3339=ns`
 
    if ($#re_list < 3) then
       echo "ERROR: Too many cesm.log files ($#log_list) for the $#re_list restart sets."
@@ -628,8 +633,10 @@ if ($USING_PRIOR_INFLATION == true) then
    else
       # Look for the output from the previous assimilation (or fill_inflation_restart)
       # If inflation files exists, use them as input for this assimilation
+      echo "Gathering inflation names at " `date --rfc-3339=ns`
       (${LIST} -rt1 *.dart.rh.${scomp}_output_priorinf_mean* | tail -n 1 >! latestfile) > & /dev/null
       (${LIST} -rt1 *.dart.rh.${scomp}_output_priorinf_sd*   | tail -n 1 >> latestfile) > & /dev/null
+      echo "finished gathering inflation names at " `date --rfc-3339=ns`
       set nfiles = `cat latestfile | wc -l`
 
       if ( $nfiles > 0 ) then
@@ -788,7 +795,9 @@ if ($input_file_list_name != $output_file_list_name) then
    exit 130
 endif
 
+echo "Gathering CAM initial names at " `date --rfc-3339=ns`
 ${LIST} -1 ${CASE}.cam_[0-9][0-9][0-9][0-9].i.${ATM_DATE_EXT}.nc >! $input_file_list_name
+echo "finished gathering CAM initial names at " `date --rfc-3339=ns`
 
 echo "`date` -- BEGIN FILTER"
 # 2 lines added for Ben to debug cycle slowing and job timing out.
@@ -835,7 +844,9 @@ echo "`date` -- BEGIN FILE RENAMING"
 #            in the initial files.
 # '.e.'      files are from the 'external system processing (ESP)', e.g. DART.
 
+echo "Gathering stages members names at " `date --rfc-3339=ns`
 foreach FILE (`${LIST} ${stages_all}_member_*.nc`)
+   echo "started the loop stages members names at " `date --rfc-3339=ns`
 
    set parts = `echo $FILE | sed -e "s#\.# #g"`
    set list = `echo $parts[1]  | sed -e "s#_# #g"`
@@ -862,7 +873,9 @@ end
 
 # Means and standard deviation files (except for inflation; 
 # excluded by, e.g., mean right after stage).
+echo "Gathering mean, sd names at " `date --rfc-3339=ns`
 foreach FILE (`${LIST} ${stages_all}_{mean,sd}*.nc`)
+   echo "started mean,sd loop names at " `date --rfc-3339=ns`
 
    set parts = `echo $FILE | sed -e "s#\.# #g"`
    set type = "e"
@@ -885,7 +898,9 @@ ${MOVE} dart_log.out                 ${scomp}_dart_log.${ATM_DATE_EXT}.out || ex
 # The .${scomp}_ part is needed by DART to distinguish
 # between inflation files from separate components in coupled assims.
 
+echo "Gathering inflation names at " `date --rfc-3339=ns`
 foreach FILE (`${LIST} ${stages_all}_{prior,post}inf_*`)
+   echo "started inflation loop names at " `date --rfc-3339=ns`
 
    set parts = `echo $FILE | sed -e "s#\.# #g"`
    ${MOVE} $FILE  ${CASE}.dart.rh.${scomp}_$parts[1].${ATM_DATE_EXT}.nc || exit 180
