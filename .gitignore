@@ -1,1 +1,7 @@
 logs/
+*.eo
+*st_archive.o*
+*run.o*
+purge.2*
+slurm*out
+pre_purge_check.2*
