@@ -9,8 +9,8 @@
 #PBS  -N compress.csh
 # #PBS  -A P86850054
 #PBS  -A NCIS0006
-#PBS  -q R9505652
-# #PBS  -q regular
+# #PBS  -q R9505652
+#PBS  -q premium
 # For restarts:
 # #PBS  -l select=9:ncpus=36:mpiprocs=36
 # For hist: 5 * 80         = 400  / 36 = 12
@@ -19,7 +19,7 @@
 # For rest: 4 * 80         = 320 / 36 =  9
 #PBS  -l select=9:ncpus=36:mpiprocs=36
 #PBS  -l walltime=01:00:00
-#PBS  -o compress_run_hist.out
+#PBS  -o compress_run_rest.out
 #PBS  -j oe 
 
 # ------------------------------------------------------------------------------
@@ -69,17 +69,17 @@ if ($#argv == 6) then
 else if ($#argv == 0) then
    # Edit these and run as a batch job.
    # 'sets' performs better when ordered by decreasing size (clm2 cpl cam cice hist dart)
-   set comp_cmd      = 'gzip'
+   set comp_cmd      = 'gunzip'
    set CASEROOT      = /glade/work/raeder/Exp/f.e21.FHIST_BGC.f09_025.CAM6assim.011
    set case_name     = $CASEROOT:t
-   set ymds          = 2013-04-01-00000
+   set ymds          = 2013-12-30-00000
    set ensemble_size = 80
    # set sets          = (hist)
    # set sets          = (hist dart)
    set sets          = (clm2 cpl cam cice)
    set stages        = (preassim output)
-   set data_dir      = /glade/scratch/${USER}/${case_name}/archive/rest/${ymds}
-   # set data_dir      = /glade/scratch/${USER}/${case_name}/run
+   # set data_dir      = /glade/scratch/${USER}/${case_name}/archive/rest/${ymds}
+   set data_dir      = /glade/scratch/${USER}/${case_name}/run
 
 else 
    echo "Usage: call with exactly 6 arguments or submit as a batch job with 0 arguments:"
