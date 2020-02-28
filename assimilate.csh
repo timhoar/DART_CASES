@@ -3,8 +3,6 @@
 # DART software - Copyright UCAR. This open source software is provided
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
-#
-# DART $Id: assimilate.csh.template 13191 2019-07-09 22:15:00Z raeder@ucar.edu $
 
 # ------------------------------------------------------------------------------
 # Purpose: assimilate with a CAM ensemble and perform advanced archiving
@@ -126,6 +124,10 @@ setenv CASEROOT $1
 @ cycle = $2 + 1
 
 cd ${CASEROOT}
+
+# FIXME; variables in data_scripts.csh are redundant with the setenvs that follow.
+# Clean it up some day.
+source ./data_scripts.csh
 
 setenv scomp                     `./xmlquery COMP_ATM      --value`
 setenv CASE                      `./xmlquery CASE          --value`
@@ -453,7 +455,7 @@ if ($#log_list >= 3) then
       # List the large files first (more efficient and reliable).
       # There is another call farther down to compress the DART files every cycle.
       echo "compress.csh started at `date`"
-      ${CASEROOT}/compress.csh gzip $CASE ${rm_date} $ensemble_size "clm2 cpl cam cice" "$stages_all"
+      ${CASEROOT}/compress.csh gzip ${rm_date} "clm2 cpl cam cice" "$stages_all"
       if ($status != 0) then
          echo "compress.csh failed at `date`"
          exit 55
@@ -478,7 +480,8 @@ if ($#log_list >= 3) then
       endif
    endif
 
-   # Remove log files: *YYMMDD-HHMMSS*.  Except not da.log files
+   # Remove log files: *YYMMDD-HHMMSS*, except not da.log files, after moves and copies are done.
+   wait
    ${REMOVE}  [^d]*${rm_log[$rm_slot]}*  &
 
    # I'd like to remove the CAM .r. files, since we always use the .i. files to do a hybrid start,
@@ -1105,7 +1108,7 @@ endif
 # echo "STARTING: compressing coupler history files and DART files at `date`"
 # ${CASEROOT}/compress.csh gzip $CASE $ATM_DATE_EXT $ensemble_size "hist dart" "$stages_all"
 echo "STARTING: compressing coupler history files at `date`"
-${CASEROOT}/compress.csh gzip $CASE $ATM_DATE_EXT $ensemble_size "hist" "$stages_all"
+${CASEROOT}/compress.csh gzip $ATM_DATE_EXT "hist" "$stages_all"
 
 if ($status != 0) then
    echo "ERROR: Compression of coupler history files and DART files failed at `date`"
@@ -1121,9 +1124,4 @@ echo "`date` -- END CAM_ASSIMILATE"
 wait
 
 exit 0
-
-# <next few lines under version control, do not edit>
-# $URL: https://svn-dares-dart.cgd.ucar.edu/DART/branches/reanalysis/models/cam-fv/shell_scripts/cesm2_1/assimilate.csh.template $
-# $Revision: 13191 $
-# $Date: 2019-07-09 16:15:00 -0600 (Tue, 09 Jul 2019) $
 
