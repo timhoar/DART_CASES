@@ -13,9 +13,9 @@ setenv  data_campaign         /gpfs/csfs1/cisl/dares/Reanalyses
 setenv  data_CESM_python      /glade/work/raeder/Models/cesm2_1_relsd_m5.6/cime/scripts/lib/CIME 
 setenv  data_DOUT_S_ROOT      /glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/archive
 
-setenv CONTINUE_RUN `./xlmquery CONTINUE_RUN --value`
+setenv CONTINUE_RUN `./xmlquery CONTINUE_RUN --value`
 if ($CONTINUE_RUN == FALSE) then
-   set START_DATE = `./xlmquery RUN_START_DATE --value`
+   set START_DATE = `./xmlquery RUN_START_DATE --value`
    set parts = `echo $START_DATE | sed -e "s#-# #"`
    setenv data_year $parts[1]
    setenv data_month $parts[2]
@@ -28,7 +28,7 @@ else if ($CONTINUE_RUN == TRUE) then
       exit 19
    endif
    set FILE = `head -n 1 ${data_scratch}/run/rpointer.atm_0001`
-   set ATM_DATE_EXT = $FILE:e
+   set ATM_DATE_EXT = $FILE:r:e
    set ATM_DATE     = `echo $ATM_DATE_EXT | sed -e "s#-# #g"`
    setenv data_year   `echo $ATM_DATE[1] | bc`
    setenv data_month  `echo $ATM_DATE[2] | bc`
