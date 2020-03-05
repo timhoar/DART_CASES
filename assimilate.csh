@@ -1008,7 +1008,10 @@ if ($cycle == $DATA_ASSIMILATION_CYCLES) then
       # This old one moved previous months of .i. {mean,sd} files,
       # which prevented them from being archived to esp/hist
       # ${MOVE}           ${CASE}*.{r,rs,rs1,i}.*${day_time}*    $hidedir
-      ${MOVE}           ${CASE}*.{r,rs,rs1,i}.*${hide_date}*    $hidedir
+      ${MOVE}           ${CASE}*.{r,rs,rs1}.*${hide_date}*    $hidedir
+      # Don't move the ...dart.i.cam_*{mean,sd} files,
+      # but move the ...{instance}.i. files.
+      ${MOVE}           ${CASE}*[^t].i.*${hide_date}*    $hidedir
 
       # Move log files: *YYMMDD-HHMMSS.  [2] means the previous restart set is being moved.
       set rm_log = `echo $log_list[2] | sed -e "s/\./ /g;"`
