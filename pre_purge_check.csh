@@ -27,7 +27,7 @@ echo "data_campaign   = ${data_campaign}"
 
 set ym = `printf %s-%02d $data_year $data_month`
 
-cd $data_proj_space
+cd ${data_proj_space}/${data_CASE}
 
 echo "Coupler history (forcing) files:"
 ls -lt cpl/hist/00${data_NINST}/*${data_year}*

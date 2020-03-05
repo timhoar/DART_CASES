@@ -124,10 +124,10 @@ endif
 set do_forcing     = 'true'
 # > > > WARNING; if restarts fails when $mm-01 is a Monday, turn off the pre_clean flag,
 #                in order to preserve what's in rest/YYYY-MM.
-set do_restarts    = 'true'
+set do_restarts    = 'false'
 set do_obs_space   = 'false'
 set do_history     = 'true'
-set do_state_space = 'true'
+set do_state_space = 'false'
 
 # Check whether there is enough project disk space to run this.
 # The numbers added to pr_used were harvested from running repack_hwm.csh.
@@ -258,7 +258,9 @@ if ($do_forcing == true) then
    set i = 1
    while ($i <= $data_NINST)
       set INST = `printf %04d $i`
-      set inst_dir = ${data_proj_space}/cpl/hist/${INST}
+# MISSING YEARLY FILES DUE TO MISSING $data_CASE here!
+#       set inst_dir = ${data_proj_space}/cpl/hist/${INST}
+      set inst_dir = ${data_proj_space}/${data_CASE}/cpl/hist/${INST}
       # "TYPE" will be replaced by `sed` commands below.
       set yearly_file = ${data_CASE}.cpl_${INST}.TYPE.${data_year}.nc
 
@@ -282,7 +284,7 @@ if ($do_forcing == true) then
          # AND the subdirectories named Previous.  I don't know how Previous were created
          # the first time around.
          # mkdir -p $inst_dir
-         mkdir -p $inst_dir/Previous
+         mkdir -p ${inst_dir}/Previous
          set init = ''
       endif
 
@@ -636,7 +638,8 @@ if ($do_history == true) then
       @ comp_ens_size = ( $data_NINST - $i ) + 1
       while ($i <= $data_NINST)
          set INST = `printf %04d $i`
-         set inst_dir = ${data_proj_space}/$components[$m]/hist/${INST}
+# MISSING YEARLY FILES DUE TO MISSING $data_CASE here!
+         set inst_dir = ${data_proj_space}/${data_CASE}/$components[$m]/hist/${INST}
 
          if (-d $inst_dir) then
             cd ${inst_dir}
