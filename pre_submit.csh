@@ -129,7 +129,7 @@ echo "$cycles cycles will be distributed among $resubmissions +1 jobs"
 # but later cycles need more.  It doubles in ~60 cycles.
 # >>> This may be fixed with Brian Dobbins > remove the nonlinear term.
 # @ job_minutes = 10 + ( $cycles_per_job * ( 10 + (( $cycles_per_job * 10) / 70 )))
-@ job_minutes = $cycles_per_job * 8 
+@ job_minutes = ( $cycles_per_job * 6 ) + 40 
 @ wall_hours  = $job_minutes / 60
 @ wall_mins   = $job_minutes % 60
 set wall_time = `printf %02d:%02d $wall_hours $wall_mins`
