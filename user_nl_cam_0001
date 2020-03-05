@@ -6,4 +6,3 @@
  empty_htapes  = .true. 
  fincl1        = 'PHIS:I' 
  nhtfrq        = -6 
-fincl2        = 'SST:I'

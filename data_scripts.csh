@@ -45,6 +45,7 @@ else if ($CONTINUE_RUN == TRUE) then
    if ($ATM_DATE[3] == '01' ) then
       if ($data_month == 1) then
          @ data_month = 12
+         @ data_year  = $data_year - 1
       else
          @ data_month = $data_month - 1
       endif

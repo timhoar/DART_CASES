@@ -41,12 +41,14 @@ if ($#argv != 0) then
    echo "Usage:  "
    echo "Before running this script"
    echo "    Run repack_st_archive.csh. "
-   echo "    Confirm that it put all the output where it belongs using pre_purge.csh. "
-   echo "    Edit the script to be sure that your desired "
-   
-   echo "    file types and model/components will be purged"
+   echo "    Confirm that it put all the output where it belongs using pre_purge_check.csh. "
+   echo "    Edit this script to be sure that your desired "
+   echo "    file types and model/components will be purged."
+   echo "    DO NOT RUN THIS SCRIPT IF THE rpointer FILES REFER TO A DATE"
+   echo "    WHICH IS >= 2 MONTHS AHEAD OF THE DATES TO BE PURGED"
+   echo "    If they are, make this script reference a different data_scripts.csh."
    echo "Call by user or script:"
-   echo "   purge.csh data_proj_space_dir data_campaign_dir year mo [do_this=false] ... "
+   echo "   purge.csh "
    exit
 endif
 
@@ -76,13 +78,13 @@ if ($do_forcing == true) then
    # which have been repackaged into $data_proj_space.
    foreach type (ha2x3h ha2x1h ha2x1hi ha2x1d hr2x)
       echo "Forcing $type" >>& ${local_arch}/$lists
-      ls ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
-      rm ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
+      # ls ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
+      rm -v ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
    end
 
    echo "Forcing \*.eo" >>& ${local_arch}/$lists
-   ls *.eo >>& ${local_arch}/$lists
-   rm *.eo >>& ${local_arch}/$lists
+   # ls *.eo >>& ${local_arch}/$lists
+   rm -v *.eo >>& ${local_arch}/$lists
 
    cd ${local_arch}
 endif
