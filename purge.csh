@@ -41,12 +41,14 @@ if ($#argv != 0) then
    echo "Usage:  "
    echo "Before running this script"
    echo "    Run repack_st_archive.csh. "
-   echo "    Confirm that it put all the output where it belongs using pre_purge.csh. "
-   echo "    Edit the script to be sure that your desired "
-   
-   echo "    file types and model/components will be purged"
+   echo "    Confirm that it put all the output where it belongs using pre_purge_check.csh. "
+   echo "    Edit this script to be sure that your desired "
+   echo "    file types and model/components will be purged."
+   echo "    DO NOT RUN THIS SCRIPT IF THE rpointer FILES REFER TO A DATE"
+   echo "    WHICH IS >= 2 MONTHS AHEAD OF THE DATES TO BE PURGED"
+   echo "    If they are, make this script reference a different data_scripts.csh."
    echo "Call by user or script:"
-   echo "   purge.csh data_proj_space_dir data_campaign_dir year mo [do_this=false] ... "
+   echo "   purge.csh "
    exit
 endif
 
@@ -66,8 +68,8 @@ if (-f ${lists}.gz) mv ${lists}.gz ${lists}.gz.$$
 pwd > $lists
 
 #------------------------
-# Look in ${data_proj_space}/${CASE}/cpl/hist/$INST
-# e.g. ${pr}/${casename}/cpl/hist/0080
+# Purge the "forcing" files (cpl history) that came from individual members at single times.
+# These have been appended to the yearly files for archiving.
 if ($do_forcing == true) then
    cd ${local_arch}/cpl/hist
    pwd >>& ${local_arch}/$lists
@@ -76,47 +78,41 @@ if ($do_forcing == true) then
    # which have been repackaged into $data_proj_space.
    foreach type (ha2x3h ha2x1h ha2x1hi ha2x1d hr2x)
       echo "Forcing $type" >>& ${local_arch}/$lists
-      ls ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
-      rm ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
+      # ls ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
+      rm -v ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
    end
 
    echo "Forcing \*.eo" >>& ${local_arch}/$lists
-   ls *.eo >>& ${local_arch}/$lists
-   rm *.eo >>& ${local_arch}/$lists
+   # ls *.eo >>& ${local_arch}/$lists
+   rm -v *.eo >>& ${local_arch}/$lists
 
    cd ${local_arch}
 endif
 
 #------------------------
-# Look in ${data_campaign}/${data_CASE}/rest/$yr_mo
-# E.g. ${data_campaign}/${data_CASE}/rest/2012-01
+# Purge the restart file sets which have been archived to Campaign Storage.
+# The original ${yr_mo}-DD-SSSSS directories were removed by repack_st_archive
+# when the tar (into "all types per member") succeeded.
+# The following ${yr_mo} directories have been archived to Campaign Storage.
 if ($do_restarts == true) then
    echo "Restarts starts at "`date`
    cd ${local_arch}/rest
    pwd >>& ${local_arch}/$lists
 
-   # The original ${yr_mo}-* were removed by repack_st_archive 
-   # when the tar (into "all types per member") succeeded.
-   # The following have been archived to Campaign Storage.
    echo "Restarts ${yr_mo}\*" >>& ${local_arch}/$lists
-   ls -d ${yr_mo}* >>& ${local_arch}/$lists
-   rm -rf ${yr_mo}*
+   rm -rfv ${yr_mo}* >>& ${local_arch}/$lists
 
    # Remove other detritus
    echo "Restarts tar\*.eo" >>& ${local_arch}/$lists
-   ls tar*.eo  >>& ${local_arch}/$lists
-   rm tar*.eo
+   rm -v tar*.eo >>& ${local_arch}/$lists
 
    cd ${local_arch}
 endif
 
 #------------------------
-# Look in 
-#    ${data_proj_space}/${data_CASE}/{lnd,atm,ice,rof}/hist/${data_NINST}/${data_CASE}.{clm2,cam,cice,mosart}_*.h[0-9].${year}.nc
-# for properly archived files.
-# $ ls -l {lnd,atm,ice,rof}/hist/0080/*.{clm2,cam,cice,mosart}_*.h*2012*[cz]
-# Or in the following for missed files;
-# $ ls {lnd,atm,ice,rof}/hist/*0001.h*00000.nc
+# Purge component history files (.h[0-9]), 
+# which have been tarred into monthly files for each member.
+# E.g. {lnd,atm,ice,rof}/hist/0080/*.{clm2,cam,cice,mosart}_*.h*[cz]
 
 if ($do_history == true) then
    set m = 1
@@ -129,8 +125,7 @@ if ($do_history == true) then
          ls ${data_CASE}.$models[$m]_0001.h${type}.${yr_mo}-*.nc > /dev/null
          if ($status != 0) break
 
-         ls ${data_CASE}.$models[$m]_*.h${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
-         rm ${data_CASE}.$models[$m]_*.h${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
+         rm -v ${data_CASE}.$models[$m]_*.h${type}.${yr_mo}-*.nc >>& ${local_arch}/$lists
          @ type++
       end
    
@@ -141,38 +136,32 @@ endif
 
 
 #------------------------
-# Look in ${data_campaign}/${data_CASE}/esp/hist/$yr_mo
-# Look in ${data_campaign}/${data_CASE}/atm/hist/$yr_mo
-# Look in ${data_campaign}/${data_CASE}/logs/$yr_mo
+# Purge the directories in $DOUT_S_ROOT (scratch ...)
+# which have been archived to Campaign Storage.
 
 if ($do_state_space == true) then
    cd ${local_arch}/esp/hist
    pwd >>& ${local_arch}/$lists
-   ls -d  $yr_mo/* >>& ${local_arch}/$lists
-   rm -rf $yr_mo   >>& ${local_arch}/$lists
+   rm -rfv $yr_mo   >>& ${local_arch}/$lists
 
    cd ${local_arch}/atm/hist
    pwd >>& ${local_arch}/$lists
-   ls -d  $yr_mo/* >>& ${local_arch}/$lists
-   rm -rf $yr_mo   >>& ${local_arch}/$lists
+   rm -rfv $yr_mo   >>& ${local_arch}/$lists
    
    # Archive DART log files (and others?)
 
    cd ${local_arch}/logs
    # This looks misdirected at first, but $lists has 'logs/' in it.
    pwd >>& ${local_arch}/$lists
-   ls     $yr_mo >>& ${local_arch}/$lists
-   rm -rf $yr_mo >>& ${local_arch}/$lists
-   ls     {atm,cpl,ice,lnd,ocn,rof}_00[0-9][02-9].log.*
-   rm -rf {atm,cpl,ice,lnd,ocn,rof}_00[0-9][02-9].log.*
+   rm -rfv $yr_mo >>& ${local_arch}/$lists
+   rm -rfv {atm,cpl,ice,lnd,ocn,rof}_00[0-9][02-9].log.* >>& ${local_arch}/$lists
    
    cd ${local_arch}
 
-   # Or just the following, but it would give less info if one failed.
-#    rm -rf {esp,atm}/hist/$yr_mo logs/$yr_mo  &
-
 endif
+
 #------------------------
+# Purge leftover junk in $RUNDIR (scratch ...)
 if ($do_rundir == true) then
    cd ${local_arch}/../run
    pwd >>& ${local_arch}/$lists
@@ -185,28 +174,25 @@ if ($do_rundir == true) then
    set d = 2
    while ($d <= $#files)
       set date = $files[$d]:r:e
-      echo "${data_CASE}.dart.rh.cam*.${date}.*" >>& ${local_arch}/$lists
-      ls ${data_CASE}.dart.rh.cam*.${date}.* >>& ${local_arch}/$lists
-      rm ${data_CASE}.dart.rh.cam*.${date}.* >>& ${local_arch}/$lists
+      # echo "${data_CASE}.dart.rh.cam*.${date}.*" >>& ${local_arch}/$lists
+      rm -v ${data_CASE}.dart.rh.cam*.${date}.* >>& ${local_arch}/$lists
       @ d++
    end
 
    # Remove less-than-useful cam_dart_log.${yr_mo}-*.out   
    set files = `ls -t cam_dart_log.${yr_mo}*.out`
-   ls $files[2-$#files] >>& ${local_arch}/$lists
-   rm $files[2-$#files] >>& ${local_arch}/$lists
+   rm -v $files[2-$#files] >>& ${local_arch}/$lists
 
    ls finidat_interp_dest_* >& /dev/null
    if ($status == 0) then
-      ls finidat_interp_dest_* >>& ${local_arch}/$lists
-      rm finidat_interp_dest_* >>& ${local_arch}/$lists
+      rm -v finidat_interp_dest_* >>& ${local_arch}/$lists
    endif
 
    cd ${local_arch}
 endif
 #------------------------
 
-cd archive
+cd ${local_arch}/../logs
 gzip $lists
 
 # Wait for all the backrounded 'rm's to finish.

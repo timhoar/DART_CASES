@@ -43,7 +43,7 @@ set num_logs = `ls -1 ${data_scratch}/run/cesm.log* | wc -l`
 
 if ($first_date == $last_date && $num_logs > 3 || \
     $first_date != $last_date && $num_logs > 2 ) then
-   echo "ERROR: too many cesm.log files in $case_run_dir; remove the extraneous"
+   echo "ERROR: too many cesm.log files in ${data_scratch}/run; remove the extraneous"
    exit
 endif
 
@@ -129,7 +129,7 @@ echo "$cycles cycles will be distributed among $resubmissions +1 jobs"
 # but later cycles need more.  It doubles in ~60 cycles.
 # >>> This may be fixed with Brian Dobbins > remove the nonlinear term.
 # @ job_minutes = 10 + ( $cycles_per_job * ( 10 + (( $cycles_per_job * 10) / 70 )))
-@ job_minutes = $cycles_per_job * 8 
+@ job_minutes = ( $cycles_per_job * 6 ) + 40 
 @ wall_hours  = $job_minutes / 60
 @ wall_mins   = $job_minutes % 60
 set wall_time = `printf %02d:%02d $wall_hours $wall_mins`
@@ -162,7 +162,7 @@ echo "Comparing dates for linking"
 if ("$first_date" == "$last_date" ) then
    # Assimilation only; link an assim-only copy to the expected name
    ln -s case_run_only_assim.py case_run.py
-   set init_files = `wc -l $case_run_dir/cam_init_files`
+   set init_files = `wc -l ${data_scratch}/run/cam_init_files`
    echo "Checking numbers of files " $init_files[1] ${data_NINST}
    if ( $init_files[1] != ${data_NINST} ) then
       echo "ERROR: the forecast didn't finish; not enough files in cam_init_files"

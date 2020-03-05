@@ -104,7 +104,7 @@ set models         = (clm2 cam cice mosart)
 set line = `grep -m 1 save_rest_freq ./assimilate.csh`
 set save_rest_freq = $line[4]
 
-if (! -d $DOUT_S_ROOT) then
+if (! -d $data_DOUT_S_ROOT) then
    echo "ERROR: Missing local archive directory (DOUT_S_ROOT).  "
    echo "       Maybe you need to run st_archive before this script"
    exit 10
@@ -124,10 +124,10 @@ endif
 set do_forcing     = 'true'
 # > > > WARNING; if restarts fails when $mm-01 is a Monday, turn off the pre_clean flag,
 #                in order to preserve what's in rest/YYYY-MM.
-set do_restarts    = 'true'
+set do_restarts    = 'false'
 set do_obs_space   = 'false'
 set do_history     = 'true'
-set do_state_space = 'true'
+set do_state_space = 'false'
 
 # Check whether there is enough project disk space to run this.
 # The numbers added to pr_used were harvested from running repack_hwm.csh.
@@ -160,8 +160,8 @@ if ($#argv != 0) then
    echo "    submit this script from the CESM CASEROOT directory. "
    echo "Call by user or script:"
    echo "   repack_st_arch.csh project_dir campaign_dir yr_mo [do_this=false] ... "
-   echo "      project_dir    = directory where $CASE.dart.e.cam_obs_seq_final.$date.nc are"
-   echo "      campaign_dir   = directory where $CASE.dart.e.cam_obs_seq_final.$date.nc are"
+   echo "      project_dir    = directory where $data_CASE.dart.e.cam_obs_seq_final.\$date.nc are"
+   echo "      campaign_dir   = directory where $data_CASE.dart.e.cam_obs_seq_final.\$date.nc are"
    echo "      yr_mo =        = Year and month to be archived, in form YYYY-MO."
    echo "      do_this=false  = Turn off one (or more) of the archiving sections."
    echo "                       'this' = {forcing,restarts,obs_space,state_space}."
@@ -174,12 +174,12 @@ endif
 # > > > WARNING: if the first day of the month is a Monday,
 #       I need to add *_0001.log* files from $archive/logs to rest/YYYY-MM-01-00000
 #       and remove the rpointer and .h0. files.
-   set yr_mo = `printf %4d-%02d ${data_year} ${data_month}`
-   set obs_space  = Diags_NTrS_${yr_mo}
+set yr_mo = `printf %4d-%02d ${data_year} ${data_month}`
+set obs_space  = Diags_NTrS_${yr_mo}
 
-   env | sort | grep SLURM
+env | sort | grep SLURM
 
-cd $DOUT_S_ROOT
+cd $data_DOUT_S_ROOT
 pwd
 
 # Check that this script has not already run completely for this date.
@@ -257,17 +257,19 @@ if ($do_forcing == true) then
    touch cmds_template
    set i = 1
    while ($i <= $data_NINST)
-      set NINST = `printf %04d $i`
-      set inst_dir = ${data_proj_space}/cpl/hist/${data_NINST}
+      set INST = `printf %04d $i`
+# MISSING YEARLY FILES DUE TO MISSING $data_CASE here!
+#       set inst_dir = ${data_proj_space}/cpl/hist/${INST}
+      set inst_dir = ${data_proj_space}/${data_CASE}/cpl/hist/${INST}
       # "TYPE" will be replaced by `sed` commands below.
-      set yearly_file = ${data_CASE}.cpl_${data_NINST}.TYPE.${data_year}.nc
+      set yearly_file = ${data_CASE}.cpl_${INST}.TYPE.${data_year}.nc
 
       if (-d $inst_dir) then
          cd ${inst_dir}
 
-         ls  ${data_CASE}.cpl_${data_NINST}.*.${data_year}.nc >& /dev/null
+         ls  ${data_CASE}.cpl_${INST}.*.${data_year}.nc >& /dev/null
          if ($status == 0) then
-            mv   ${data_CASE}.cpl_${data_NINST}.*.${data_year}.nc Previous || exit 28
+            mv   ${data_CASE}.cpl_${INST}.*.${data_year}.nc Previous || exit 28
             # "$init" is a place holder, in the template command, for the existence
             # of a yearly file
             set init = ${inst_dir}/Previous/$yearly_file
@@ -278,7 +280,11 @@ if ($do_forcing == true) then
          cd ${data_DOUT_S_ROOT}/cpl/hist
      
       else
-         mkdir -p $inst_dir
+         # 2020-3-4; After hiding the inst_dirs in BadSST I need to make new ones,
+         # AND the subdirectories named Previous.  I don't know how Previous were created
+         # the first time around.
+         # mkdir -p $inst_dir
+         mkdir -p ${inst_dir}/Previous
          set init = ''
       endif
 
@@ -296,8 +302,8 @@ if ($do_forcing == true) then
       #    or the time monotonicity may be violated.
       #    This defeats the intent of the "append" mode, but testing confirmed it.
 
-      echo "ncrcat $init  ${data_DOUT_S_ROOT}/cpl/hist/${data_CASE}.cpl_${data_NINST}.TYPE.${yr_mo}*.nc " \
-           " ${inst_dir}/$yearly_file &> TYPE_${data_NINST}.eo " \
+      echo "ncrcat $init  ${data_DOUT_S_ROOT}/cpl/hist/${data_CASE}.cpl_${INST}.TYPE.${yr_mo}*.nc " \
+           " ${inst_dir}/$yearly_file &> TYPE_${INST}.eo " \
            >> cmds_template
       @ i++
    end
@@ -449,7 +455,7 @@ if ($do_restarts == true) then
          # so they don't have CESM log files in them, which will cause the code below to crash.
          ls ${rd}/*.log.*  >& /dev/null
          if ($status != 0 ) then
-            echo "ERROR: $DOUT_S_ROOT/rest/${rd} has no CESM log files."
+            echo "ERROR: $data_DOUT_S_ROOT/rest/${rd} has no CESM log files."
             echo "       Import them from archive/logs, then remove the rpointer and .h0. files."
             echo "       % ls1 to get the time stamp of the .i., grep for it in logs, "
             echo "       % cp ../../logs/{*_0001,cesm}.log. ... "
@@ -469,10 +475,10 @@ if ($do_restarts == true) then
          touch mycmdfile
          set i = 1
          while ($i <= $data_NINST)
-            set NINST = `printf %04d $i`
-            echo "tar -c -f ${yr_mo}/${data_CASE}.${data_NINST}.alltypes.${rd}.tar "                     \
-                           "${rd}/${data_CASE}.*_${data_NINST}.*.${rd}.* &>  tar_${data_NINST}_${rd}.eo "  \
-                     "&& rm ${rd}/${data_CASE}.*_${data_NINST}.*.${rd}.* &>> tar_${data_NINST}_${rd}.eo" >> mycmdfile
+            set INST = `printf %04d $i`
+            echo "tar -c -f ${yr_mo}/${data_CASE}.${INST}.alltypes.${rd}.tar "                     \
+                           "${rd}/${data_CASE}.*_${INST}.*.${rd}.* &>  tar_${INST}_${rd}.eo "  \
+                     "&& rm ${rd}/${data_CASE}.*_${INST}.*.${rd}.* &>> tar_${INST}_${rd}.eo" >> mycmdfile
             @ i++
          end
          # Clean up the rest (non-instance files).
@@ -631,22 +637,23 @@ if ($do_history == true) then
       set i = 1
       @ comp_ens_size = ( $data_NINST - $i ) + 1
       while ($i <= $data_NINST)
-         set NINST = `printf %04d $i`
-         set inst_dir = ${data_proj_space}/$components[$m]/hist/${data_NINST}
+         set INST = `printf %04d $i`
+# MISSING YEARLY FILES DUE TO MISSING $data_CASE here!
+         set inst_dir = ${data_proj_space}/${data_CASE}/$components[$m]/hist/${INST}
 
          if (-d $inst_dir) then
             cd ${inst_dir}
 
 
-            # The file form is like yearly_file = ${data_CASE}.cpl_${NINST}.TYPE.${year}.nc
+            # The file form is like yearly_file = ${data_CASE}.cpl_${INST}.TYPE.${year}.nc
             # in the forcing file section, but for all TYPEs and a different component.
-            ls ${data_CASE}.$models[$m]_${data_NINST}.*.${year}.nc >& /dev/null
+            ls ${data_CASE}.$models[$m]_${INST}.*.${data_year}.nc >& /dev/null
             if ($status == 0) then
                mkdir -p Previous
-               mv ${data_CASE}.$models[$m]_${data_NINST}.*.${data_year}.nc Previous 
+               mv ${data_CASE}.$models[$m]_${INST}.*.${data_year}.nc Previous 
             else if ($month != 1) then
                # Exit because if $inst_dir exists there should be a yearly file in it.
-               echo "There are no ${data_CASE}.$models[$m]_${data_NINST}."'*'".${year}.nc files.  Exiting"
+               echo "There are no ${data_CASE}.$models[$m]_${INST}."'*'".${data_year}.nc files.  Exiting"
                exit 95
             endif
 
@@ -662,11 +669,11 @@ if ($do_history == true) then
       # Start with a template of all the instances of one file type.
    
       # This is what's in cmds_template, which is re-used here.
-      #       set inst_dir = ${project}/${data_CASE}/cpl/hist/${data_NINST}
-      #       set yearly_file = ${data_CASE}.cpl_${data_NINST}.TYPE.${data_year}.nc
+      #       set inst_dir = ${project}/${data_CASE}/cpl/hist/${INST}
+      #       set yearly_file = ${data_CASE}.cpl_${INST}.TYPE.${data_year}.nc
       #       echo "ncrcat --rec_apn    $yearly_file " \
-      #            "${data_CASE}.cpl_${data_NINST}.TYPE.${yr_mo}-*.nc ${inst_dir}/$yearly_file &> " \
-      #            "TYPE_${NINST}.eo " \
+      #            "${data_CASE}.cpl_${INST}.TYPE.${yr_mo}-*.nc ${inst_dir}/$yearly_file &> " \
+      #            "TYPE_${INST}.eo " \
       set cmds_template = cmds_template_$models[$m]
 
       ls ${data_DOUT_S_ROOT}/cpl/hist/cmds_template

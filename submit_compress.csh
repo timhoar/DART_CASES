@@ -24,7 +24,7 @@ UNTESTED
 
 # Get CASE environment variables from the central variables file.
 # This should make environment variables available in compress_hist.csh too.
-your_caseroot/data_scripts.csh
+source your_caseroot/data_scripts.csh
 
 set comp_cmd      = 'gzip -k'
 set ymds          = 2010-07-17-64800

@@ -37,7 +37,7 @@ UNTESTED
 
 # Get CASE environment variables from the central variables file.
 # This should make environment variables available in compress_hist.csh too.
-your_caseroot/data_scripts.csh
+source your_caseroot/data_scripts.csh
 
 # 'sets' performs better when ordered by decreasing size (clm2 cpl cam cice hist dart)
 # but this can handle only 1 entry in $sets.

@@ -75,6 +75,7 @@ echo "   (arg2) date       = $ymds"
 echo "   (arg3) sets       = $sets"
 echo "   (arg4) stages     = $stages"
 echo "   data_CASE     = $data_CASE"
+echo "   data_CASEROOT = $data_CASEROOT"
 echo "   ensemble_size = $data_NINST"
 
 # ------------------------------------------------------------------------------
@@ -210,10 +211,10 @@ $date
 
 if ($task > 0) then
    if ($?PBS_O_WORKDIR) then
-      mpiexec_mpt -n $task ${CASEROOT}/launch_cf.sh ./mycmdfile
+      mpiexec_mpt -n $task ${data_CASEROOT}/launch_cf.sh ./mycmdfile
       set mpi_status = $status
    else if ($?SLURM_SUBMIT_DIR) then
-      mpirun      -n $task ${CASEROOT}/launch_cf.sh ./mycmdfile
+      mpirun      -n $task ${data_CASEROOT}/launch_cf.sh ./mycmdfile
       set mpi_status = $status
    endif
 
