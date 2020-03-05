@@ -154,7 +154,7 @@ if ($do_state_space == true) then
    # This looks misdirected at first, but $lists has 'logs/' in it.
    pwd >>& ${local_arch}/$lists
    rm -rfv $yr_mo >>& ${local_arch}/$lists
-   rm -rfv {atm,cpl,ice,lnd,ocn,rof}_00[0-9][02-9].log.*
+   rm -rfv {atm,cpl,ice,lnd,ocn,rof}_00[0-9][02-9].log.* >>& ${local_arch}/$lists
    
    cd ${local_arch}
 
@@ -174,7 +174,7 @@ if ($do_rundir == true) then
    set d = 2
    while ($d <= $#files)
       set date = $files[$d]:r:e
-      echo "${data_CASE}.dart.rh.cam*.${date}.*" >>& ${local_arch}/$lists
+      # echo "${data_CASE}.dart.rh.cam*.${date}.*" >>& ${local_arch}/$lists
       rm -v ${data_CASE}.dart.rh.cam*.${date}.* >>& ${local_arch}/$lists
       @ d++
    end
@@ -192,7 +192,7 @@ if ($do_rundir == true) then
 endif
 #------------------------
 
-cd archive
+cd ${local_arch}/../logs
 gzip $lists
 
 # Wait for all the backrounded 'rm's to finish.
