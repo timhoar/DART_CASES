@@ -1,8 +1,10 @@
 #!/bin/tcsh
-#
+
 # DART software - Copyright UCAR. This open source software is provided
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
+#
+# $Id$
 #
 #PBS  -N diags_rean
 #PBS  -A NCIS0006
@@ -44,23 +46,32 @@ else
 #    endif
 endif
 
-# DART source directory on this machine
-# These things should be gathered from env_*.xml files in CASEROOT.
-set DART = ~/DART/reanalysis_git
-set cam = 'cam-fv'
+if (! -f data_scripts.csh) then
+   echo "ERROR: no data_scripts.csh.  Submit from the CASEROOT directory"
+   exit
+endif
+
+# Get CASE environment variables from the central variables file.
+source ./data_scripts.csh
+if ($status != 0) exit 57
+# Convert to numbers
+# @ num_month = `echo $data_month | bc`
+# @ num_year  = `echo $data_year  | bc`
+echo "data_month = $data_month"
+echo "data_year  = $data_year"
+echo "data_proj_space = ${data_proj_space}"
+echo "data_DART_src   = ${data_DART_src}"
+echo "data_DOUT_S_ROOT   = ${data_DOUT_S_ROOT}"
+echo "data_CASEROOT   = ${data_CASEROOT}"
 
 # Use big endian obs_diag for output from IBM
 # set endian = '_big_endian'
 set endian = ' '
-set year = 2013
-# set diag_dir = 	Diags_NTrS_${year}-${mm}
-set mo   = 4
 
-set mm = `printf %02d $mo`
-set yymm = ${year}-${mm}
-set proj_dir = /glade/p/nsc/ncis0006/Reanalyses/f.e21.FHIST_BGC.f09_025.CAM6assim.011/esp/hist/$yymm
+set yymm = `printf %4d-%02d $data_year $data_month`
 
-set diag_dir = 	Diags_N.PaAmAt_${year}-${mm}
+set diag_dir = 	${data_DOUT_S_ROOT}/esp/hist/Diags_NTrS_${yymm}
+set proj_dir = ${data_proj_space}/esp/hist/${yymm}
 echo "diag_dir = $diag_dir"
 echo "proj_dir = $proj_dir"
 
@@ -77,7 +88,7 @@ endif
 pwd
 
 # ls -1 does not work; unusable formatting.
-ls ../*obs_seq_final*${year}-${mm}*[^rz] >! obs.list 
+ls ../*obs_seq_final*${yymm}*[^rz] >! obs.list 
 if ($status != 0) then
    echo "Making obs.list failed.  Exiting"
    exit
@@ -92,12 +103,12 @@ else
    exit 30
 endif
 
-if ($mo == 12) then
-   @ year_last = $year + 1
+if ($data_month == 12) then
+   @ year_last = $data_year + 1
    @ mo_last = 1
 else
-   @ year_last = $year
-   @ mo_last = $mo + 1
+   @ year_last = $data_year
+   @ mo_last = $data_month + 1
 endif
 
 ex input.nml<< ex_end
@@ -107,9 +118,9 @@ s;= '.*';= "";
 /obs_sequence_list/
 s;= '.*';= "./obs.list";
 /first_bin_center/
-s;=  $year, 1;=  $year,$mo;
+s;=  BOGUS_YEAR, 1;=  $data_year,$data_month;
 /last_bin_center/
-s;=  $year, 2;=  $year_last,$mo_last;
+s;=  BOGUS_YEAR, 2;=  $year_last,$mo_last;
 wq
 ex_end
 
@@ -119,8 +130,8 @@ else
    vi input.nml
 endif
 
-echo "Running ${DART}/models/${cam}/work/obs_diag${endian}"
-${DART}/models/${cam}/work/obs_diag${endian} >&! obs_diag.out 
+echo "Running ${data_DART_src}/models/cam-fv/work/obs_diag${endian}"
+${data_DART_src}/models/cam-fv/work/obs_diag${endian} >&! obs_diag.out 
 set ostat = $status
 if ($ostat != 0) then
    echo "ERROR: obs_diag failed.  Exiting"
@@ -157,7 +168,12 @@ if (-f $obs_seq_tar) then
    echo "obs_seq tar file was about to be removed.  Exiting"
    exit 60
 endif
-rm *obs_seq*${year}-${mm}*
+rm *obs_seq*${yymm}*
 
-exit 0
+exit
 
+# <next few lines under version control, do not edit>
+# $URL$
+# $Id$
+# $Revision$
+# $Date$

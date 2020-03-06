@@ -1,7 +1,12 @@
-logs/
+logs/*z
+logs/*cheyenne*
 *.eo
 *st_archive.o*
 *run.o*
 purge.2*
 slurm*out
 pre_purge_check.2*
+Buildconf/cplconf/*_00[123456789]*
+Buildconf/cplconf/*_000[3456789]*
+CaseDocs/*_00[123456789]*
+CaseDocs/*_000[3456789]*
