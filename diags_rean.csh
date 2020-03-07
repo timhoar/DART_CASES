@@ -46,22 +46,32 @@ else
 #    endif
 endif
 
+if (! -f data_scripts.csh) then
+   echo "ERROR: no data_scripts.csh.  Submit from the CASEROOT directory"
+   exit
+endif
+
 # Get CASE environment variables from the central variables file.
-${data_CASEROOT}/data_scripts.csh
+source ./data_scripts.csh
+if ($status != 0) exit 57
+# Convert to numbers
+# @ num_month = `echo $data_month | bc`
+# @ num_year  = `echo $data_year  | bc`
 echo "data_month = $data_month"
 echo "data_year  = $data_year"
 echo "data_proj_space = ${data_proj_space}"
 echo "data_DART_src   = ${data_DART_src}"
+echo "data_DOUT_S_ROOT   = ${data_DOUT_S_ROOT}"
+echo "data_CASEROOT   = ${data_CASEROOT}"
 
 # Use big endian obs_diag for output from IBM
 # set endian = '_big_endian'
 set endian = ' '
 
-set mm = `printf %02d $data_month`
-set yymm = ${data_year}-${mm}
+set yymm = `printf %4d-%02d $data_year $data_month`
 
-set diag_dir = 	Diags_NTrS_${year}-${mm}
-set proj_dir = ${data_proj_space}/esp/hist/$yymm
+set diag_dir = 	${data_DOUT_S_ROOT}/esp/hist/Diags_NTrS_${yymm}
+set proj_dir = ${data_proj_space}/${data_CASE}/esp/hist/${yymm}
 echo "diag_dir = $diag_dir"
 echo "proj_dir = $proj_dir"
 
@@ -158,7 +168,7 @@ if (-f $obs_seq_tar) then
    echo "obs_seq tar file was about to be removed.  Exiting"
    exit 60
 endif
-rm *obs_seq*${yymm}*
+# rm *obs_seq*${yymm}*
 
 exit
 
