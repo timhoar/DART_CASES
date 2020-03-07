@@ -98,10 +98,8 @@ set stages_all     = (`echo $line[3-$#line] | sed -e "s#[',]# #g"`)
 # Non-esp history output which might need to be processed.
 # "components" = generic pieces of CESM (used in the archive directory names).
 # "models" = component instance names (models, used in file names).
-# set components     = (lnd  atm ice  rof)
-# set models         = (clm2 cam cice mosart)
-set components     = (atm ice  rof)
-set models         = (cam cice mosart)
+set components     = (lnd  atm ice  rof)
+set models         = (clm2 cam cice mosart)
 
 set line = `grep -m 1 save_rest_freq ./assimilate.csh`
 set save_rest_freq = $line[4]
