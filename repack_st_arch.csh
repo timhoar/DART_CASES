@@ -124,10 +124,10 @@ endif
 set do_forcing     = 'true'
 # > > > WARNING; if restarts fails when $mm-01 is a Monday, turn off the pre_clean flag,
 #                in order to preserve what's in rest/YYYY-MM.
-set do_restarts    = 'false'
+set do_restarts    = 'true'
 set do_obs_space   = 'false'
 set do_history     = 'true'
-set do_state_space = 'false'
+set do_state_space = 'true'
 
 # Check whether there is enough project disk space to run this.
 # The numbers added to pr_used were harvested from running repack_hwm.csh.
@@ -258,8 +258,6 @@ if ($do_forcing == true) then
    set i = 1
    while ($i <= $data_NINST)
       set INST = `printf %04d $i`
-# MISSING YEARLY FILES DUE TO MISSING $data_CASE here!
-#       set inst_dir = ${data_proj_space}/cpl/hist/${INST}
       set inst_dir = ${data_proj_space}/${data_CASE}/cpl/hist/${INST}
       # "TYPE" will be replaced by `sed` commands below.
       set yearly_file = ${data_CASE}.cpl_${INST}.TYPE.${data_year}.nc
@@ -615,14 +613,15 @@ if ($do_history == true) then
    # set models         = (clm2 cam cice mosart)
    set m = 1
    while ($m <= $#components)
-      ls $components[$m]/hist/*h0* >& /dev/null
+      ls $components[$m]/hist/*.h0.* >& /dev/null
       if ($status != 0) then
          echo "Skipping $components[$m]/hist"
          @ m++
          continue
       endif
       if ($models[$m] == 'cam' ) then
-         ls $components[$m]/hist/*h[^0]* >& /dev/null
+         # Look only for files which are after possible leftovers from the previous month.
+         ls $components[$m]/hist/*.h[^0].${yr_mo}-02* >& /dev/null
          if ($status != 0) then
             echo "Skipping $components[$m]/hist"
             @ m++
@@ -638,23 +637,28 @@ if ($do_history == true) then
       @ comp_ens_size = ( $data_NINST - $i ) + 1
       while ($i <= $data_NINST)
          set INST = `printf %04d $i`
-# MISSING YEARLY FILES DUE TO MISSING $data_CASE here!
          set inst_dir = ${data_proj_space}/${data_CASE}/$components[$m]/hist/${INST}
 
          if (-d $inst_dir) then
             cd ${inst_dir}
 
-
             # The file form is like yearly_file = ${data_CASE}.cpl_${INST}.TYPE.${year}.nc
             # in the forcing file section, but for all TYPEs and a different component.
             ls ${data_CASE}.$models[$m]_${INST}.*.${data_year}.nc >& /dev/null
-            if ($status == 0) then
-               mkdir -p Previous
+# Temporary(?) fix for when script does this move, then dies, and I rerun.
+            set ls_status = $status
+            if ($ls_status == 0) then
+               if (! -d Previous) mkdir -p Previous
                mv ${data_CASE}.$models[$m]_${INST}.*.${data_year}.nc Previous 
-            else if ($month != 1) then
-               # Exit because if $inst_dir exists there should be a yearly file in it.
-               echo "There are no ${data_CASE}.$models[$m]_${INST}."'*'".${data_year}.nc files.  Exiting"
-               exit 95
+            else
+               ls Previous/${data_CASE}.$models[$m]_${INST}.*.${data_year}.nc >& /dev/null
+               set ls_status = $status
+               if ($ls_status != 0 && $data_month != 1) then
+                  # Exit because if $inst_dir exists there should be a yearly file in it.
+                  echo "There are no ${data_CASE}.$models[$m]_${INST}."'*'".${data_year}.nc files.  Exiting"
+                  exit 95
+               endif
+# End of temporary fix re-writing.
             endif
 
             cd ${data_DOUT_S_ROOT}/$components[$m]/hist
