@@ -43,8 +43,9 @@ else if ($CONTINUE_RUN == TRUE) then
    @ data_year  = $d_year
    @ data_month = $d_month
 
-   # If the assimilation ended on the first day of the month
-   # then the month assimilated is the previous.
+   # This script is intended to help process the most recently completed month.
+   # The date in the rpointer file should be the first date of the next month,
+   # so set the month and year to the right values for the completed month.
    if ($data_month == 1) then
       @ data_month = 12
       @ data_year  = $data_year - 1

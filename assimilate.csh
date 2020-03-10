@@ -78,17 +78,7 @@ else if ($?PBS_NODEFILE) then
    setenv    NUMTASKS_PERNODE `grep $ANY_OLD_NODE $PBS_NODEFILE | wc -l`
    setenv  MPIEXEC_MPT_DEBUG 0
    setenv MP_DEBUG_NOTIMEOUT yes
-# Debugging filter hanging/churning after writing the 'forecast' stage files.
-# 2020-3-09; we changed the TMPDIR defined in .login to solve a Matlab problem.
-# but I'm guessing that didn't affect the TMPDIR definition in here.
-# I've changed it back to /dev/shm/raeder.
-# Let's see what it is in a batch job.
-   echo "assimilate.csh: TMPDIR = $TMPDIR"
-# Also, check peak memory usage.
-   module load peak_memusage
-# See peak_memusage, below
-   # setenv          LAUNCHCMD mpiexec_mpt
-   setenv          LAUNCHCMD 'mpiexec_mpt peak_memusage.exe'
+   setenv          LAUNCHCMD mpiexec_mpt
 
    echo "jobname        : $JOBNAME"
    echo "numcpus        : $NUMCPUS"
@@ -814,16 +804,16 @@ echo "finished gathering CAM initial names at " `date --rfc-3339=ns`
 
 echo "`date` -- BEGIN FILTER"
 # 2 lines added for Ben to debug cycle slowing and job timing out.
-echo "before" | logger -t raederdebug
-ps auxfw | logger -t raederdebug
+# echo "before" | logger -t raederdebug
+# ps auxfw | logger -t raederdebug
 
 ${LAUNCHCMD} ${EXEROOT}/filter || exit 140
 
-# 2 lines added for Ben to debug cycle slowing and job timing out.
-echo "after" | logger -t raederdebug
-ps auxfw | logger -t raederdebug
-sleep 5
-ps auxfw | logger -t raederdebug
+# 4 lines added for Ben to debug cycle slowing and job timing out.
+# echo "after" | logger -t raederdebug
+# ps auxfw | logger -t raederdebug
+# sleep 5
+# ps auxfw | logger -t raederdebug
 
 echo "`date` -- END FILTER"
 
