@@ -2,6 +2,9 @@
 
 # This script defines data/arguments/parameters
 # used by many non-CESM scripts in the workflow.
+# It should only be referenced to process the most recently completed month.
+# If some other month must be processed, update the data_year and data_month
+# at the end.
 
 setenv  data_NINST            80
 setenv  data_proj_space       /glade/p/nsc/ncis0006/Reanalyses
@@ -42,13 +45,11 @@ else if ($CONTINUE_RUN == TRUE) then
 
    # If the assimilation ended on the first day of the month
    # then the month assimilated is the previous.
-   if ($ATM_DATE[3] == '01' ) then
-      if ($data_month == 1) then
-         @ data_month = 12
-         @ data_year  = $data_year - 1
-      else
-         @ data_month = $data_month - 1
-      endif
+   if ($data_month == 1) then
+      @ data_month = 12
+      @ data_year  = $data_year - 1
+   else
+      @ data_month = $data_month - 1
    endif
 
 else
