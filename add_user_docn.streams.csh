@@ -11,10 +11,14 @@
 #          or move them out of the way, change env_run.xml,
 #          run preview_namelist, and rerun this script.
 
+# mkdir User_docn.streams_offset12h
+
 set n = 1
 while ($n <= 80)
    set nn = `printf %04d $n`
-   sed -e "s#      0#      43200#" CaseDocs/docn.streams.txt.prescribed_${nn} \
+#    mv user_docn.streams.txt.prescribed_${nn} User_docn.streams_offset12h
+
+   sed -e "s#      43200#      0#" CaseDocs/docn.streams.txt.prescribed_${nn} \
                                >   user_docn.streams.txt.prescribed_${nn}
    @ n++
 end
