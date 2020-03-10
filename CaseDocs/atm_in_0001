@@ -15,7 +15,6 @@
 &cam_history_nl
  empty_htapes		= .true.
  fincl1		= 'PHIS:I'
- fincl2		= 'SST:I'
  inithist		= 'ENDOFRUN'
  nhtfrq		= -6
 /
