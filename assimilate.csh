@@ -804,16 +804,16 @@ echo "finished gathering CAM initial names at " `date --rfc-3339=ns`
 
 echo "`date` -- BEGIN FILTER"
 # 2 lines added for Ben to debug cycle slowing and job timing out.
-echo "before" | logger -t raederdebug
-ps auxfw | logger -t raederdebug
+# echo "before" | logger -t raederdebug
+# ps auxfw | logger -t raederdebug
 
 ${LAUNCHCMD} ${EXEROOT}/filter || exit 140
 
-# 2 lines added for Ben to debug cycle slowing and job timing out.
-echo "after" | logger -t raederdebug
-ps auxfw | logger -t raederdebug
-sleep 5
-ps auxfw | logger -t raederdebug
+# 4 lines added for Ben to debug cycle slowing and job timing out.
+# echo "after" | logger -t raederdebug
+# ps auxfw | logger -t raederdebug
+# sleep 5
+# ps auxfw | logger -t raederdebug
 
 echo "`date` -- END FILTER"
 

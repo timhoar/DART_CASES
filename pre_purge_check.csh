@@ -42,12 +42,15 @@ echo "\n Restart files in Campaign Storage:"
 ls -l ${data_campaign}/${data_CASE}/rest/${ym}/*{00${data_NINST},inf}*
 
 echo "\n Ensemble means and inflation files in Campaign Storage:"
+echo "${data_campaign}/${data_CASE}/esp/hist/${ym}"
 ls -l ${data_campaign}/${data_CASE}/esp/hist/${ym}
 
 echo "\n CAM preassim ensembles in Campaign Storage:"
+echo "${data_campaign}/${data_CASE}/atm/hist/${ym}"
 ls -l ${data_campaign}/${data_CASE}/atm/hist/${ym}
 
 echo "\n DART log files in Campaign Storage:"
+echo "${data_campaign}/${data_CASE}/logs/${ym}"
 ls -l ${data_campaign}/${data_CASE}/logs/${ym}
 
 # <next few lines under version control, do not edit>
