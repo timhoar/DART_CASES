@@ -134,15 +134,14 @@ set yr_mo = $purge_yymm
 
 #-----------------------------------------------------------------------
 
-set lists_file = rm_${yr_mo}.lists
-set lists = ${data_DOUT_S_ROOT}/logs/${lists_file}
+set lists_file = ${data_DOUT_S_ROOT}/logs/rm_${yr_mo}.lists
 echo "FILE CONTAINING LIST OF FILES TO BE REMOVED:"
-echo "   $lists"
+echo "   $lists_file"
 echo ""
 
 # This will handle running the script in listing mode and then purging mode.
 # Both lists_files will be saved.
-cd $lists:h
+cd $lists_file:h
 if (-f ${lists_file}.gz) mv ${lists_file}.gz ${lists_file}.gz.$$
 if (-f ${lists_file}) mv ${lists_file} ${lists_file}.$$
 
@@ -171,18 +170,18 @@ cat $lists_file
 # These have been appended to the yearly files for archiving.
 if ($do_forcing == true) then
    cd ${data_DOUT_S_ROOT}/cpl/hist
-   pwd >>& $lists
+   pwd >>& $lists_file
    echo "Processing "`pwd`" at "`date`
 
    # The original cpl hist (forcing) files,
    # which have been repackaged into $data_proj_space.
    foreach type (ha2x3h ha2x1h ha2x1hi ha2x1d hr2x)
-      echo "Forcing $type" >>& $lists
-      ${SIMPLE_ACTION} ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& $lists
+      echo "Forcing $type" >>& $lists_file
+      ${SIMPLE_ACTION} ${data_CASE}.cpl_*.${type}.${yr_mo}-*.nc >>& $lists_file
    end
 
-   echo "Forcing \*.eo"  >>& $lists
-   ${SIMPLE_ACTION} *.eo >>& $lists
+   echo "Forcing \*.eo"  >>& $lists_file
+   ${SIMPLE_ACTION} *.eo >>& $lists_file
 
    cd ${data_DOUT_S_ROOT}
 endif
@@ -194,15 +193,15 @@ endif
 # The following ${yr_mo} directories have been archived to Campaign Storage.
 if ($do_restarts == true) then
    cd ${data_DOUT_S_ROOT}/rest
-   pwd >>& $lists
+   pwd >>& $lists_file
    echo "Processing "`pwd`" at "`date`
 
-   echo      "Restarts ${yr_mo}\*" >>& $lists
-   ${RECURSIVE_ACTION} ${yr_mo}*   >>& $lists
+   echo      "Restarts ${yr_mo}\*" >>& $lists_file
+   ${RECURSIVE_ACTION} ${yr_mo}*   >>& $lists_file
 
    # Remove other detritus
-   echo "Restarts tar\*.eo" >>& $lists
-   ${SIMPLE_ACTION} tar*.eo >>& $lists
+   echo "Restarts tar\*.eo" >>& $lists_file
+   ${SIMPLE_ACTION} tar*.eo >>& $lists_file
 
    cd ${data_DOUT_S_ROOT}
 endif
@@ -216,15 +215,15 @@ if ($do_history == true) then
    set m = 1
    while ($m <= $#components)
       cd ${data_DOUT_S_ROOT}/$components[$m]/hist
-      pwd >>& $lists
+      pwd >>& $lists_file
       echo "Processing "`pwd`" at "`date`
       @ type = 0
       while ($type < 10)
-         echo "$components[$m] type $type" >>& $lists
+         echo "$components[$m] type $type" >>& $lists_file
          ls ${data_CASE}.$models[$m]_0001.h${type}.${yr_mo}-*.nc > /dev/null
          if ($status != 0) break
 
-         ${SIMPLE_ACTION} ${data_CASE}.$models[$m]_*.h${type}.${yr_mo}-*.nc >>& $lists
+         ${SIMPLE_ACTION} ${data_CASE}.$models[$m]_*.h${type}.${yr_mo}-*.nc >>& $lists_file
          @ type++
       end
    
@@ -239,22 +238,22 @@ endif
 if ($do_state_space == true) then
    cd ${data_DOUT_S_ROOT}/esp/hist
    echo "Processing "`pwd`" at "`date`
-   pwd                          >>& $lists
-   ${RECURSIVE_ACTION} $yr_mo   >>& $lists
+   pwd                          >>& $lists_file
+   ${RECURSIVE_ACTION} $yr_mo   >>& $lists_file
 
    cd ${data_DOUT_S_ROOT}/atm/hist
    echo "Processing "`pwd`" at "`date`
-   pwd                          >>& $lists
-   ${RECURSIVE_ACTION} $yr_mo   >>& $lists
+   pwd                          >>& $lists_file
+   ${RECURSIVE_ACTION} $yr_mo   >>& $lists_file
    
    # Archive DART log files (and others?)
 
    cd ${data_DOUT_S_ROOT}/logs
    echo "Processing "`pwd`" at "`date`
-   # This looks misdirected at first, but $lists has 'logs/' in it.
-   pwd                        >>& $lists
-   ${RECURSIVE_ACTION} $yr_mo >>& $lists
-   ${RECURSIVE_ACTION} {atm,cpl,ice,lnd,ocn,rof}_00[0-9][02-9].log.* >>& $lists
+   # This looks misdirected at first, but $lists_file has 'logs/' in it.
+   pwd                        >>& $lists_file
+   ${RECURSIVE_ACTION} $yr_mo >>& $lists_file
+   ${RECURSIVE_ACTION} {atm,cpl,ice,lnd,ocn,rof}_00[0-9][02-9].log.* >>& $lists_file
    
    cd ${data_DOUT_S_ROOT}
 
@@ -264,7 +263,7 @@ endif
 # Purge leftover junk in $RUNDIR (scratch ...)
 if ($do_rundir == true) then
    cd ${data_DOUT_S_ROOT}/../run
-   pwd >>& $lists
+   pwd >>& $lists_file
    echo "Processing "`pwd`" at "`date`
 
    # Remove old inflation restarts that were archived elsewhere
@@ -275,17 +274,17 @@ if ($do_rundir == true) then
    set d = 2
    while ($d <= $#files)
       set date = $files[$d]:r:e
-      ${SIMPLE_ACTION} ${data_CASE}.dart.rh.cam*.${date}.* >>& $lists
+      ${SIMPLE_ACTION} ${data_CASE}.dart.rh.cam*.${date}.* >>& $lists_file
       @ d++
    end
 
    # Remove less-than-useful cam_dart_log.${yr_mo}-*.out   
    set files = `ls -t cam_dart_log.${yr_mo}*.out`
-   ${SIMPLE_ACTION} $files[2-$#files] >>& $lists
+   ${SIMPLE_ACTION} $files[2-$#files] >>& $lists_file
 
    ls finidat_interp_dest_* >& /dev/null
    if ($status == 0) then
-      ${SIMPLE_ACTION} finidat_interp_dest_* >>& $lists
+      ${SIMPLE_ACTION} finidat_interp_dest_* >>& $lists_file
    endif
 
    cd ${data_DOUT_S_ROOT}
@@ -295,8 +294,5 @@ endif
 
 cd ${data_DOUT_S_ROOT}/logs
 gzip $lists_file
-
-# Wait for all the backrounded 'rm's to finish.
-wait
 
 exit 0
