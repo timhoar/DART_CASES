@@ -41,6 +41,7 @@ echo ' '
 echo "  MPI_LAUNCH_TIMEOUT = $MPI_LAUNCH_TIMEOUT"
 echo "  MPI_IB_CONGEST= $MPI_IB_CONGEST"
 echo "  MPI_COMM_MAX= $MPI_COMM_MAX"
+echo "  TMPDIR= $TMPDIR"
 # echo "  MPI_VERBOSE= $MPI_VERBOSE"
 # echo "  MPI_VERBOSE2= $MPI_VERBOSE2"
 echo ' '

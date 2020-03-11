@@ -35,7 +35,7 @@ ls -lt cpl/hist/00${data_NINST}/*${data_year}*
 echo "\n Component history files in project space `pwd`:"
 ls -lt {lnd,atm,ice,rof}/hist/00${data_NINST}/*.{clm2,cam,cice,mosart}_*.h*${data_year}*[cz]
 
-echo "\n DART obs space diagnostic files in project space `pwd`:"
+echo "\n DART obs space diagnostic files in project space `pwd`/esp/hist/${ym}:"
 ls -lt esp/hist/${ym}
 
 echo "\n Restart files in Campaign Storage:"
