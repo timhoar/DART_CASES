@@ -45,7 +45,7 @@ echo "\n Ensemble means and inflation files in Campaign Storage:"
 echo "${data_campaign}/${data_CASE}/esp/hist/${ym}"
 ls -l ${data_campaign}/${data_CASE}/esp/hist/${ym}
 
-echo "\n CAM preassim ensembles in Campaign Storage:"
+echo "\n CAM forecast ensembles in Campaign Storage:"
 echo "${data_campaign}/${data_CASE}/atm/hist/${ym}"
 ls -l ${data_campaign}/${data_CASE}/atm/hist/${ym}
 
