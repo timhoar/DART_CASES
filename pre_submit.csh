@@ -34,8 +34,6 @@ endif
 source ./data_scripts.csh
 echo "data_CASEROOT    = ${data_CASEROOT}"
 echo "data_NINST       = ${data_NINST}"
-echo "data_year        = ${data_year}"
-echo "data_month       = ${data_month}"
 echo "data_scratch     = ${data_scratch}"
 echo "data_CESM_python = ${data_CESM_python}"
 
@@ -206,9 +204,9 @@ cd -
 
 @ new_month = $data_month + 1
 echo "Now issue a pull request to DART_CASES:"
-echo "   % git status -uno > run_req_${data_year}_${new_month}.csh"
-echo "   Edit run_ to make it `git add` all of the modified files"
-echo "   % csh run_req_YYYY-MM.csh"
+echo "   % git status -uno > push_prep.csh"
+echo "   Edit push_prep.csh to make it `git add` all of the modified files"
+echo "   % csh push_prep.csh"
 echo "   % git commit "
 echo "     with comments about the important modifications."
 echo "   % git push origin ${data_CASEROOT}"
