@@ -204,7 +204,8 @@ cd -
 
 @ new_month = $data_month + 1
 echo "Now issue a pull request to DART_CASES:"
-echo "   % git status -uno > push_prep.csh"
+echo "   % git status -uno >! push_prep.csh"
+echo "   % echo 'git add push_prep.csh' >> push_prep.csh"
 echo "   Edit push_prep.csh to make it `git add` all of the modified files"
 echo "   % csh push_prep.csh"
 echo "   % git commit "
