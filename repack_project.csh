@@ -147,6 +147,10 @@ if ($do_obs_space == true) then
    ${data_CASEROOT}/mv_to_campaign.csh \
       $data_year ${data_proj_space}/esp/hist/ \
       ${data_campaign}/${data_CASE}/esp/hist
+   # If this is successful, it is safe to remove the original obs_seq_final files
+   # from $DOUT_S_ROOT/esp/hist, since there will be tarred versions on $project
+   # and CS.
+   # Do that here?  Or manually?
 
    cd ${data_proj_space}
    
