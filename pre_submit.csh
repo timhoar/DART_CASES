@@ -202,18 +202,17 @@ sort cam.input_data_list | uniq > cam.input_data_list.sorted
 sort clm.input_data_list | uniq > clm.input_data_list.sorted
 cd -
 
-@ new_month = $data_month + 1
-echo "Now issue a pull request to DART_CASES:"
-echo "   % git status -uno >! push_prep.csh"
-echo "   Edit push_prep.csh to make it `git add` all of the modified files"
-echo "   % csh push_prep.csh"
-echo "   % git commit "
+echo "If this is the start of a new month, issue a pull request to DART_CASES:"
+echo '   % git status -uno >! push_prep.csh'
+echo '   Edit push_prep.csh to make it `git add` all of the modified files'
+echo '   % csh push_prep.csh'
+echo '   % git commit '
 echo "     with comments about the important modifications."
-echo "   % git push origin ${data_CASEROOT}"
+echo '   % git push origin '${data_CASEROOT}
 echo "   On github...kdraeder/DART_CASES issue the pull request."
 # Echo the submit command, without generating new ${comp}_in_#### files.
 echo "After approval, submit the job using"
-echo "./case.submit -M begin,end --skip-preview-namelist"
+echo './case.submit -M begin,end --skip-preview-namelist'
 
 exit 0
 

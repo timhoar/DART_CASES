@@ -243,8 +243,9 @@ if ($do_state_space == true) then
 
    cd ${data_DOUT_S_ROOT}/atm/hist
    echo "Processing "`pwd`" at "`date`
-   pwd                          >>& $lists_file
-   ${RECURSIVE_ACTION} $yr_mo   >>& $lists_file
+   pwd                                 >>& $lists_file
+   ${RECURSIVE_ACTION} $yr_mo          >>& $lists_file
+   ${RECURSIVE_ACTION} *.h0.*$yr_mo*   >>& $lists_file
    
    # Archive DART log files (and others?)
 
