@@ -113,7 +113,15 @@ endif
 
 # Turn off short term archiver for the new month,
 # after it was activated for the last job of a month.
-if ($start[3] == "01") ./xmlchange DOUT_S=FALSE
+# Change; now that we're trying to run whole months,
+# it's convenient to make st_archive run automatically
+# at the end of successful jobs.
+# if ($start[3] == "01") ./xmlchange DOUT_S=FALSE
+if ($end[3] == "01") then
+   ./xmlchange DOUT_S=TRUE
+else
+   ./xmlchange DOUT_S=FALSE
+endif
 
 # I won't run more than a month, so I'm leaving the years
 # contribution (0) out of this tally.
