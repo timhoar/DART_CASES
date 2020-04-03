@@ -4,8 +4,6 @@
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
 #
-# $Id$
-#
 # Script to set up the submission of a variety of jobs:
 #    full cycle(s)
 #    assim only
@@ -13,7 +11,13 @@
 # and to check whether the case is ready for that submission:
 #    prevent running assimilations when there are too many cesm.log files in $rundir
 #    check the requested start date against the one in rpointer.atm_0001
-#    
+#
+# After all the desired changes have been applied, preview_namelists will be run
+# as this is necessary to generate the namelists that will be used for the next 
+# CESM advance. A little post-processing is done on Buildconf/[cam,clm].input_data_list
+# to generate new files that are sorted and have unique entries. That file is what should
+# be under version control.
+#
 # Run in $CASEROOT
 
 if ($#argv != 4) then
@@ -28,7 +32,8 @@ endif
 
 # Get CASE environment variables from the central variables file.
 source ./data_scripts.csh
-echo "data_NINST = ${data_NINST}"
+echo "data_CASEROOT    = ${data_CASEROOT}"
+echo "data_NINST       = ${data_NINST}"
 echo "data_scratch     = ${data_scratch}"
 echo "data_CESM_python = ${data_CESM_python}"
 
@@ -108,7 +113,15 @@ endif
 
 # Turn off short term archiver for the new month,
 # after it was activated for the last job of a month.
-if ($start[3] == "01") ./xmlchange DOUT_S=FALSE
+# Change; now that we're trying to run whole months,
+# it's convenient to make st_archive run automatically
+# at the end of successful jobs.
+# if ($start[3] == "01") ./xmlchange DOUT_S=FALSE
+if ($end[3] == "01") then
+   ./xmlchange DOUT_S=TRUE
+else
+   ./xmlchange DOUT_S=FALSE
+endif
 
 # I won't run more than a month, so I'm leaving the years
 # contribution (0) out of this tally.
@@ -176,14 +189,38 @@ echo "case_run.py is linked to"
 ls -l case_run.py
 cd -
 
+# Generate the namelists that will be used for the model advance and should
+# be version-controlled. Also generates metadata that needs post-processing
+# before being version-controlled.
+# The *modelio* namelists will get regenerated as a matter of course
+# because preview_namelists is always run by the first cycle.
+# The *modelio* namelists have logfile names with unique strings that
+# are generated when preview_namelists runs. Consequently, the logfile
+# names generated here will be changed when preview_namelists is run by
+# the first cycle. The --skip-preview-namelist option to case.submit prevents
+# running preview_namelists for each of the DATA_ASSIMILATION_CYCLES,
+# which is a colossal waste of time.
+
+./preview_namelists
+
+echo "Creating Buildconf/[cam,clm].input_data_list.sorted files."
+
+cd Buildconf
+sort cam.input_data_list | uniq > cam.input_data_list.sorted
+sort clm.input_data_list | uniq > clm.input_data_list.sorted
+cd -
+
+echo "If this is the start of a new month, issue a pull request to DART_CASES:"
+echo '   % git status -uno >! push_prep.csh'
+echo '   Edit push_prep.csh to make it `git add` all of the modified files'
+echo '   % csh push_prep.csh'
+echo '   % git commit '
+echo "     with comments about the important modifications."
+echo '   % git push origin '${data_CASEROOT}
+echo "   On github...kdraeder/DART_CASES issue the pull request."
 # Echo the submit command, without generating new ${comp}_in_#### files.
-echo "Now submit the job using"
-echo "./case.submit -M begin,end --skip-preview-namelist"
+echo "After approval, submit the job using"
+echo './case.submit -M begin,end --skip-preview-namelist'
 
 exit 0
 
-# <next few lines under version control, do not edit>
-# $URL$
-# $Id$
-# $Revision$
-# $Date$

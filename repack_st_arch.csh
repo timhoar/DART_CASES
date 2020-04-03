@@ -472,9 +472,18 @@ if ($do_restarts == true) then
          endif
          touch mycmdfile
          set i = 1
+# When the first day of the month is a Monday (or whatever's set in setup_advance),
+# st_archive archives those files to rest without compressing them.
+# There could be a compression here as part of tarring them:
+#          set comp_arg = ''
+#          if ($day_o_month == 01) comp_arg = ' -z'
+#          ...
+#          echo " tar ${comp_arg} -c ...
+# This would still result in tar files with a different size 
+# for the first day of the month, but would save space (~67 Gb /month).
          while ($i <= $data_NINST)
             set INST = `printf %04d $i`
-            echo "tar -c -f ${yr_mo}/${data_CASE}.${INST}.alltypes.${rd}.tar "                     \
+            echo "tar -c -f ${yr_mo}/${data_CASE}.${INST}.alltypes.${rd}.tar "                 \
                            "${rd}/${data_CASE}.*_${INST}.*.${rd}.* &>  tar_${INST}_${rd}.eo "  \
                      "&& rm ${rd}/${data_CASE}.*_${INST}.*.${rd}.* &>> tar_${INST}_${rd}.eo" >> mycmdfile
             @ i++
@@ -615,7 +624,7 @@ if ($do_history == true) then
    while ($m <= $#components)
       ls $components[$m]/hist/*.h0.* >& /dev/null
       if ($status != 0) then
-         echo "Skipping $components[$m]/hist"
+         echo "\n Skipping $components[$m]/hist"
          @ m++
          continue
       endif
@@ -623,7 +632,7 @@ if ($do_history == true) then
          # Look only for files which are after possible leftovers from the previous month.
          ls $components[$m]/hist/*.h[^0].${yr_mo}-02* >& /dev/null
          if ($status != 0) then
-            echo "Skipping $components[$m]/hist"
+            echo "\n Skipping $components[$m]/hist"
             @ m++
             continue
          endif
@@ -631,7 +640,7 @@ if ($do_history == true) then
 
       cd $components[$m]/hist
       echo " "
-      echo "Location for history is `pwd`"
+      echo "Source location for history is `pwd`"
 
       set i = 1
       @ comp_ens_size = ( $data_NINST - $i ) + 1
@@ -642,10 +651,11 @@ if ($do_history == true) then
          if (-d $inst_dir) then
             cd ${inst_dir}
 
+            # This section makes sure that the existing (partial) yearly file
+            # is in the right place for ncrcat to find it and add the new month's data to it.
             # The file form is like yearly_file = ${data_CASE}.cpl_${INST}.TYPE.${year}.nc
             # in the forcing file section, but for all TYPEs and a different component.
             ls ${data_CASE}.$models[$m]_${INST}.*.${data_year}.nc >& /dev/null
-# Temporary(?) fix for when script does this move, then dies, and I rerun.
             set ls_status = $status
             if ($ls_status == 0) then
                if (! -d Previous) mkdir -p Previous
@@ -658,7 +668,6 @@ if ($do_history == true) then
                   echo "There are no ${data_CASE}.$models[$m]_${INST}."'*'".${data_year}.nc files.  Exiting"
                   exit 95
                endif
-# End of temporary fix re-writing.
             endif
 
             cd ${data_DOUT_S_ROOT}/$components[$m]/hist
@@ -680,6 +689,7 @@ if ($do_history == true) then
       #            "TYPE_${INST}.eo " \
       set cmds_template = cmds_template_$models[$m]
 
+      echo "Checking existence of the template used to make a local cmds file."
       ls ${data_DOUT_S_ROOT}/cpl/hist/cmds_template
       if ($status != 0) then
          echo "ERROR: ${data_DOUT_S_ROOT}/cpl/hist/cmds_template is missing; need it for archiving h# files."
@@ -743,6 +753,7 @@ if ($do_history == true) then
          set mpi_status = $status
          echo "   history mpirun launch_cf.sh ends at "`date`
       
+         echo "Checking for the existence of cmdfile error files, which would mean 'stop'"
          ls *.eo >& /dev/null
          if ($status == 0) then
             grep ncrcat *.eo >& /dev/null

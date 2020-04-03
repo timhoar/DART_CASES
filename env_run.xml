@@ -252,7 +252,7 @@
       timing tests.
     </desc>
     </entry>
-    <entry id="JOB_IDS" value="case.st_archive:1195948.chadmin1.ib0.cheyenne.ucar.edu">
+    <entry id="JOB_IDS" value="case.run:1366753.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1366754.chadmin1.ib0.cheyenne.ucar.edu">
       <type>char</type>
       <desc>List of job ids for most recent case.submit</desc>
     </entry>
@@ -265,7 +265,7 @@
     </entry>
   </group>
   <group id="run_data_archive">
-    <entry id="DOUT_S" value="FALSE">
+    <entry id="DOUT_S" value="TRUE">
       <type>logical</type>
       <valid_values>TRUE,FALSE</valid_values>
       <desc>Logical to turn on short term archiving.

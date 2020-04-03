@@ -41,8 +41,8 @@
 #SBATCH --job-name=repack_project
 # Output standard output and error to a file named with 
 # the job-name and the jobid.
-#SBATCH -o %x_%j.eo 
-#SBATCH -e %x_%j.eo 
+#SBATCH -o %x_%j_2014.eo 
+#SBATCH -e %x_%j_2014.eo 
 # 80 members (1 type at a time)
 #SBATCH --ntasks=80 
 #SBATCH --time=04:00:00
@@ -134,7 +134,7 @@ env | sort | grep SLURM
 
 echo "------------------------"
 if ($do_obs_space == true) then
-   cd ${data_proj_space}/esp/hist
+   cd ${data_proj_space}/${data_CASE}/esp/hist
    echo " "
    echo "Location for obs space is `pwd`"
 
@@ -145,10 +145,15 @@ if ($do_obs_space == true) then
    # but only the files which are newer than the CS versions will be transferred.
 
    ${data_CASEROOT}/mv_to_campaign.csh \
-      $data_year ${data_proj_space}/esp/hist/ \
+      $data_year ${data_proj_space}/${data_CASE}/esp/hist/ \
       ${data_campaign}/${data_CASE}/esp/hist
 
-   cd ${data_proj_space}
+   # If this is successful, it is safe to remove the original obs_seq_final files
+   # from $DOUT_S_ROOT/esp/hist, since there will be tarred versions on $project
+   # and CS.
+   # Do that here?  Or manually?
+
+   cd ${data_proj_space}/${data_CASE}
    
 endif
 
@@ -168,10 +173,11 @@ if ($do_history == true) then
          continue
       endif 
 
-      cd ${data_proj_space}/$components[$m]/hist
+      cd ${data_proj_space}/${data_CASE}/$components[$m]/hist
 
       if ($components[$m] == 'cpl') then
          set types = ( ha2x1d hr2x ha2x3h ha2x1h ha2x1hi )
+         echo "============================"
          echo "Location for history is `pwd`"
       else
          ls 0001/*h0* >& /dev/null
@@ -264,10 +270,10 @@ if ($do_history == true) then
       end
 
       ${data_CASEROOT}/mv_to_campaign.csh \
-         $data_year ${data_proj_space}/$components[$m]/hist/  \
+         $data_year ${data_proj_space}/${data_CASE}/$components[$m]/hist/  \
          ${data_campaign}/${data_CASE}/$components[$m]/hist
  
-      cd ${data_proj_space}
+      cd ${data_proj_space}/${data_CASE}
 
       @ m++
    end
