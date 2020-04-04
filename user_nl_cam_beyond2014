@@ -1,0 +1,46 @@
+! Users should add all user specific namelist changes below in the form of 
+! namelist_var = new_namelist_value 
+ 
+ inithist      = 'ENDOFRUN'
+ ncdata        = 'cam_initial.nc'
+ empty_htapes  = .true. 
+ fincl1        = 'PHIS:I' 
+ nhtfrq        = -6 
+
+! Below this line are the changes needed to run beyond 2014.
+
+ srf_emis_type                 = 'CYCLICAL'
+ srf_emis_cycle_yr             = 2014
+ prescribed_ozone_type         = 'CYCLICAL'
+ prescribed_ozone_cycle_yr     = 2014
+ prescribed_strataero_type     = 'CYCLICAL'
+ prescribed_strataero_cycle_yr = 2014
+
+! The flbc file provides methane and no2 etc.. The hindcast years show a strong increasing trend.
+! The projection years are annual averages only. Given the interpolation options of CYCLICAL, SERIAL, or FIXED;
+! CYCLICAL and SERIAL are out, leaving SERIAL 
+
+ flbc_type = 'SERIAL'
+ flbc_file = '/glade/p/cesmdata/cseg/inputdata/atm/waccm/lb/LBC_2014-2500_CMIP6_SSP370_0p5degLat_GlobAnnAvg_c190301.nc'
+
+! The tracer_cnst_file provides 'O3','OH','NO3','HO2', 'HALONS' which have strong seasonal cycles.
+! The HALONS also have a strong increasing trend. SSP370 or SSP585 look as good as any.
+
+ tracer_cnst_type     = 'INTERP_MISSING_MONTHS'
+ tracer_cnst_datapath = '/glade/p/cesmdata/cseg/inputdata/atm/cam/tracer_cnst'
+ tracer_cnst_file     = 'tracer_cnst_halons_3D_L70_2014-2101_CMIP6-SSP5-8.5_c190307.nc'
+
+! The external forcing files provide things like volcanics.
+! The volcanic data files have monthly values for 2010 and 5000,
+! so INTERP_MISSING_MONTHS seems like the right thing.
+! Problem is the hindcasts only go through 2015 for variables: 
+! CH4_CHML:  H2O production derived from 2x CH4 chemical loss rate
+! emiss_ene_ind, emissions of so4_a1 energy+industry
+! emiss_anthro: CEDS sulfate aerosol (0.025*SO2) anthro energy+industrial emissions
+
+ ext_frc_type      = 'INTERP_MISSING_MONTHS'
+ ext_frc_specifier = 
+'H2O    -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/elev/H2OemissionCH4oxidationx2_3D_L70_1849-2101_CMIP6ensAvg_SSP3-7.0_c190403.nc'
+'num_a1 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/emissions_ssp370/emissions-cmip6-ScenarioMIP_IAMC-AIM-ssp370-1-1_num_so4_a1_anthro-ene_vertical_mol_175001-210101_0.9x1.25_c20190222.nc'
+'so4_a1 -> /glade/p/cesmdata/cseg/inputdata/atm/cam/chem/emis/emissions_ssp370/emissions-cmip6-ScenarioMIP_IAMC-AIM-ssp370-1-1_so4_a1_anthro-ene_vertical_mol_175001-210101_0.9x1.25_c20190222.nc'
+
