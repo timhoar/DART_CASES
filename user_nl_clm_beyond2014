@@ -48,6 +48,7 @@ stream_fldfilename_popdens = '/glade/p/cesmdata/cseg/inputdata/lnd/clm2/firedata
 
 ! SSP5-8.5 is the least bad extension of harvest information for beyond 2015
 ! Peter Lawrence claims only the total is important.
+! See https://github.com/ESCOMP/CTSM/issues/969
 
  flanduse_timeseries = '/glade/p/cesmdata/cseg/inputdata/lnd/clm2/surfdata_map/landuse.timeseries_0.9x1.25_SSP5-8.5_78pfts_CMIP6_simyr1850-2100_c181209.nc'
 
