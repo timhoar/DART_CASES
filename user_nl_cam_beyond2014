@@ -7,6 +7,8 @@
  fincl1        = 'PHIS:I' 
  nhtfrq        = -6 
 
+! Below this line are the changes needed to run beyond 2014.
+
  srf_emis_type                 = 'CYCLICAL'
  srf_emis_cycle_yr             = 2014
  prescribed_ozone_type         = 'CYCLICAL'
@@ -28,12 +30,13 @@
  tracer_cnst_datapath = '/glade/p/cesmdata/cseg/inputdata/atm/cam/tracer_cnst'
  tracer_cnst_file     = 'tracer_cnst_halons_3D_L70_2014-2101_CMIP6-SSP5-8.5_c190307.nc'
 
-! The external forcing files provide things like volcanics. The volcanic data files have monthly values for 2010 and 5000,
-! so INTERP_MISSING_MONTHS seems like the right thing. Problem is the following hindcasts only go through 2015: 
+! The external forcing files provide things like volcanics.
+! The volcanic data files have monthly values for 2010 and 5000,
+! so INTERP_MISSING_MONTHS seems like the right thing.
+! Problem is the hindcasts only go through 2015 for variables: 
 ! CH4_CHML:  H2O production derived from 2x CH4 chemical loss rate
 ! emiss_ene_ind, emissions of so4_a1 energy+industry
 ! emiss_anthro: CEDS sulfate aerosol (0.025*SO2) anthro energy+industrial emissions
-! The following choices 
 
  ext_frc_type      = 'INTERP_MISSING_MONTHS'
  ext_frc_specifier = 
