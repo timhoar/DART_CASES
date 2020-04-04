@@ -47,7 +47,7 @@
 #SBATCH -o %x_%j.eo 
 #SBATCH -e %x_%j.eo 
 # 80 members
-# restarts #SBATCH --ntasks=160 
+# restarts (actually CLM hist) #SBATCH --ntasks=160 
 # forcing files: 
 #SBATCH --ntasks=405 
 # partial history set (8 members x 2 types) #SBATCH --ntasks=16
