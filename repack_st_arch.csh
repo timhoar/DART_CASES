@@ -47,9 +47,9 @@
 #SBATCH -o %x_%j.eo 
 #SBATCH -e %x_%j.eo 
 # 80 members
-# restarts (actually CLM hist) 
-#SBATCH --ntasks=160 
-# forcing files: #SBATCH --ntasks=405 
+# restarts (actually CLM hist) #SBATCH --ntasks=160 
+# forcing files: 
+#SBATCH --ntasks=405 
 # partial history set (8 members x 2 types) #SBATCH --ntasks=16
 # 3 members; 
 # #SBATCH --ntasks=15 
@@ -121,7 +121,7 @@ endif
 # do_history     => nens * MAX(# history file types.  Currently 2 (CLM))
 # do_state_space => 1  (Could be upgraded to use #rest_dates(4-5) * #stats(4))
 
-set do_forcing     = 'false'
+set do_forcing     = 'true'
 # > > > WARNING; if restarts fails when $mm-01 is a Monday, turn off the pre_clean flag,
 #                in order to preserve what's in rest/YYYY-MM.
 set do_restarts    = 'true'
