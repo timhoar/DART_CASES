@@ -1131,7 +1131,7 @@
         <value compclass="LND">FALSE</value>
       </values>
     </entry>
-    <entry id="DATA_ASSIMILATION_CYCLES" value="120">
+    <entry id="DATA_ASSIMILATION_CYCLES" value="124">
       <type>integer</type>
       <valid_values/>
       <desc> Number of model run - data assimilation steps to complete </desc>
