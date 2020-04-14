@@ -453,11 +453,14 @@ if ($do_restarts == true) then
          # so they don't have CESM log files in them, which will cause the code below to crash.
          ls ${rd}/*.log.*  >& /dev/null
          if ($status != 0 ) then
-            echo "ERROR: $data_DOUT_S_ROOT/rest/${rd} has no CESM log files."
-            echo "       Import them from archive/logs, then remove the rpointer and .h0. files."
-            echo "       % ls1 to get the time stamp of the .i., grep for it in logs, "
-            echo "       % cp ../../logs/{*_0001,cesm}.log. ... "
-            echo "       Then rerun this with do_forcing turned off."
+            echo "ERROR: $data_DOUT_S_ROOT/rest/${rd} is not optimized for archiving."
+            echo "       1) Remove the rpointer and .h0. files."
+            echo "       2) Import log files from archive/logs, "
+            echo "          ls -l *0001.i.*   to get the time stamp of the .i. "
+            echo "          grep for it in logs, "
+            echo "          cp ../../logs/{*_0001,cesm}.log.[file name parts]* . "
+            echo "       3) Compress the *.r.* files (probably with compress.csh)."
+            echo "       4) Then rerun this with do_forcing turned off."
             exit 59
          endif
       

@@ -217,7 +217,7 @@ cd -
 
 echo "If this is the start of a new month, issue a pull request to DART_CASES:"
 echo '   % git status -uno | sed -e "s#modified:#git add#" >! push_prep.csh'
-echo '   Edit push_prep.csh to make it `git add` all of the modified files'
+echo '   Edit push_prep.csh to make it a csh script '
 echo '   % csh push_prep.csh'
 echo '   % git commit '
 echo "     with comments about the important modifications."
