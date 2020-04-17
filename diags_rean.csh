@@ -63,6 +63,7 @@ echo "data_proj_space = ${data_proj_space}"
 echo "data_DART_src   = ${data_DART_src}"
 echo "data_DOUT_S_ROOT   = ${data_DOUT_S_ROOT}"
 echo "data_CASEROOT   = ${data_CASEROOT}"
+echo "data_CASE       = ${data_CASE}"
 
 # Use big endian obs_diag for output from IBM
 # set endian = '_big_endian'
@@ -138,16 +139,6 @@ if ($ostat != 0) then
    exit 40
 endif
 
-# Create the obs_seq_tar file name
-# Extract the case name from the first file name in the obs.list.
-# OR; set CASE = `./xmlquery CASE --value`
-# ${CASE}.dart.e.cam_obs_seq_final.YYYY-MM-DD-SSSSS
-set obs_seq = `head -n 1 obs.list` 
-# Extract the file name from the path (:t), then strip off 
-# everything after the $CASENAME (:r), and finally add the pieces
-# needed for the tar file name.
-set obs_seq_tar = $obs_seq:t:r:r:r:r.cam_obs_seq_final.${yymm}.tgz 
-
 # cd ../${obs_dir}
 if (! -d ${proj_dir}) then
    mkdir ${proj_dir}
@@ -157,6 +148,8 @@ else
    exit
 endif
 
+# Archive all the obs_seq_finals for this month in a tar file.
+set obs_seq_tar = ${data_CASE}.cam_obs_seq_final.${yymm}.tgz 
 tar -c -z -f ${proj_dir}/$obs_seq_tar ../*obs_seq*${yymm}*
 if ($status != 0) then
    echo "ERROR: tar of obs_seq_finals failed.  Exiting"
