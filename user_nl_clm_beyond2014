@@ -32,6 +32,8 @@ hist_avgflag_pertape = 'I','A'
 hist_dov2xy = .true.,.false.
 use_lch4 = .false.
 
+! Everything below this line is needed to run beyond 2014.
+
 ! SSP3 (-7.0?) has as good a population as any ... they are all the same through 2016.
 model_year_align_popdens  = 1850
 stream_year_first_popdens = 1850
@@ -45,5 +47,8 @@ stream_fldfilename_popdens = '/glade/p/cesmdata/cseg/inputdata/lnd/clm2/firedata
  stream_year_last_ndep  = 2015
 
 ! SSP5-8.5 is the least bad extension of harvest information for beyond 2015
+! Peter Lawrence claims only the total is important.
+! See https://github.com/ESCOMP/CTSM/issues/969
+
  flanduse_timeseries = '/glade/p/cesmdata/cseg/inputdata/lnd/clm2/surfdata_map/landuse.timeseries_0.9x1.25_SSP5-8.5_78pfts_CMIP6_simyr1850-2100_c181209.nc'
 

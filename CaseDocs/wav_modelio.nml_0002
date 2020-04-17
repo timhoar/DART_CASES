@@ -1,7 +1,7 @@
 &modelio
   diri = "/glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/bld/wav"
   diro = "/glade/scratch/raeder/f.e21.FHIST_BGC.f09_025.CAM6assim.011/run"
-  logfile = "wav_0002.log.200324-172501"
+  logfile = "wav_0002.log.200416-212825"
 /
 &pio_inparm
   pio_netcdf_format = "64bit_offset"

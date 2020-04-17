@@ -3,26 +3,46 @@
 finidat = 'f.e21.FHIST_BGC.f09_025.CAM6assim.011.clm2.r.2012-01-01-00000.nc'
 
 
-hist_empty_htapes = .true.
+ hist_empty_htapes = .true.
 
-hist_fincl1 = 'TSA','ER','EFLX_LH_TOT','HR'
+ hist_fincl1 = 'TSA','ER','EFLX_LH_TOT','HR'
+
+ hist_fincl2 = 'CPHASE','GPP','GRAINC_TO_FOOD','GSSHALN',
+
+               'GSSUNLN','NPP','NPP_NUPTAKE','PLANT_NDEMAND',
+
+               'QVEGT','TLAI'
+
+ hist_nhtfrq = -6,-6
+
+ hist_mfilt  = 1,1
+
+ hist_avgflag_pertape = 'I','A'
+
+ hist_dov2xy = .true.,.false.
+
+ use_lch4 = .false.
+
+ model_year_align_popdens  = 1850
+
+ stream_year_first_popdens = 1850
+
+ stream_year_last_popdens  = 2100
+
+ stream_fldfilename_popdens = '/glade/p/cesmdata/cseg/inputdata/lnd/clm2/firedata/clmforc.Li_2018_SSP3_CMIP6_hdm_0.5x0.5_AVHRR_simyr1850-2100_c181205.nc'
+
+ ndep_taxmode           = 'cycle'
+
+ model_year_align_ndep  = 2015
+
+ stream_year_first_ndep = 2015
+
+ stream_year_last_ndep  = 2015
 
 
 
-hist_fincl2 = 'CPHASE','GPP','GRAINC_TO_FOOD','GSSHALN',
+ flanduse_timeseries = '/glade/p/cesmdata/cseg/inputdata/lnd/clm2/surfdata_map/landuse.timeseries_0.9x1.25_SSP5-8.5_78pfts_CMIP6_simyr1850-2100_c181209.nc'
 
-              'GSSUNLN','NPP','NPP_NUPTAKE','PLANT_NDEMAND',
 
-              'QVEGT','TLAI'
-
-hist_nhtfrq = -6,-6
-
-hist_mfilt  = 1,1
-
-hist_avgflag_pertape = 'I','A'
-
-hist_dov2xy = .true.,.false.
-
-use_lch4 = .false.
 
 / 
