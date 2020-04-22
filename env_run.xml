@@ -252,7 +252,7 @@
       timing tests.
     </desc>
     </entry>
-    <entry id="JOB_IDS" value="case.run:1828439.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1828440.chadmin1.ib0.cheyenne.ucar.edu">
+    <entry id="JOB_IDS" value="case.run:1849088.chadmin1.ib0.cheyenne.ucar.edu, case.st_archive:1849089.chadmin1.ib0.cheyenne.ucar.edu">
       <type>char</type>
       <desc>List of job ids for most recent case.submit</desc>
     </entry>
