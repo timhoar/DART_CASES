@@ -1,5 +1,7 @@
 #!/bin/tcsh
 
+# Submit from the directory which contains the files to be compressed.
+
 # DART software - Copyright UCAR. This open source software is provided
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
@@ -12,9 +14,9 @@
 #SBATCH -o %x_%j.errout 
 #SBATCH -e %x_%j.errout 
 # 80 members
-# restarts #SBATCH --ntasks=320 
-# forcing files: 
-#SBATCH --ntasks=405 
+# restarts 
+#SBATCH --ntasks=320 
+# forcing files: #SBATCH --ntasks=405 
 #SBATCH --time=02:00:00
 #SBATCH --mail-type=END
 #SBATCH --mail-type=FAIL
@@ -46,7 +48,7 @@ source data_scripts.csh
 
 set comp_cmd      = 'gzip '
 # set comp_cmd      = 'gzip -k'
-set ymds          = 2014-12-01-00000
+set ymds          = 2016-02-01-00000
 # set sets          = (cpl)
 # Restarts
 set sets          = (clm2 cpl cam cice)
