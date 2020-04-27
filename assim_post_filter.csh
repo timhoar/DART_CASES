@@ -17,12 +17,11 @@
 #PBS  -l walltime=01:00:00
 #PBS  -o assim_post_filter.out
 #PBS  -j oe 
+#PBS  -k eod 
 
 # DART software - Copyright UCAR. This open source software is provided
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
-#
-# DART $Id: assimilate.csh.template 13191 2019-07-09 22:15:00Z raeder@ucar.edu $
 
 # ------------------------------------------------------------------------------
 # Purpose: resume assimilate.csh at some point after a new if-endif block,
@@ -1119,9 +1118,4 @@ echo "`date` -- END CAM_ASSIMILATE"
 wait
 
 exit 0
-
-# <next few lines under version control, do not edit>
-# $URL: https://svn-dares-dart.cgd.ucar.edu/DART/branches/reanalysis/models/cam-fv/shell_scripts/cesm2_1/assimilate.csh.template $
-# $Revision: 13191 $
-# $Date: 2019-07-09 16:15:00 -0600 (Tue, 09 Jul 2019) $
 

@@ -37,6 +37,7 @@
 #PBS  -l walltime=00:20:00
 #PBS  -o compress.out
 #PBS  -j oe 
+#PBS  -k eod 
 
 # Get CASE environment variables from the central variables file.
 # This should make environment variables available in compress_hist.csh too.
