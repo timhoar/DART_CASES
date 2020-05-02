@@ -5,7 +5,8 @@
 # http://www.image.ucar.edu/DAReS/DART/DART_download
 #
 #PBS  -N diags_rean
-#PBS  -A NCIS0006
+# #PBS  -A NCIS0006
+#PBS  -A P86850054
 #PBS  -q share
 # Resources I want:
 #    select=#nodes
