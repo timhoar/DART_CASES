@@ -30,13 +30,13 @@ set ym = `printf %s-%02d $data_year $data_month`
 cd ${data_proj_space}/${data_CASE}
 
 echo "Coupler history (forcing) files in project space `pwd`:"
-ls -lt cpl/hist/00${data_NINST}/*${data_year}*
+ls -l cpl/hist/00${data_NINST}/*${data_year}*
 
 echo "\n Component history files in project space `pwd`:"
-ls -lt {lnd,atm,ice,rof}/hist/00${data_NINST}/*.{clm2,cam,cice,mosart}_*.h*${data_year}*[cz]
+ls -l {lnd,atm,ice,rof}/hist/00${data_NINST}/*.{clm2,cam,cice,mosart}_*.h*${data_year}*[cz]
 
 echo "\n DART obs space diagnostic files in project space `pwd`/esp/hist/${ym}:"
-ls -lt esp/hist/${ym}
+ls -l esp/hist/${ym}
 
 echo "\n Restart files in Campaign Storage:"
 ls -l ${data_campaign}/${data_CASE}/rest/${ym}/*{00${data_NINST},inf}*

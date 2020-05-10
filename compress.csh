@@ -121,9 +121,12 @@ switch ($comp)
             @ task++
             echo "$comp_cmd $file_name &> compress_${task}.eo " >> mycmdfile
          else if (-f ${file_name}.gz) then
-            # Kluge to get around situations where an earlier job compressed the file,
+            # Handle situations where an earlier job compressed the file,
             # but failed for some other reason, so it's being re-run.
             echo "$file_name already compressed"
+         else if (-f $file_name:r) then
+            # Handle situations where an earlier job decompressed the file,
+            echo "$file_name already decompressed"
          else
             echo 'ERROR: Could not find "'$file_name'" to compress.'
             exit 47
@@ -149,8 +152,10 @@ switch ($comp)
                   echo "$comp_cmd $file_name &> compress_${task}.eo" >> mycmdfile
             else if (-f ${file_name}.gz) then
                echo "$file_name already compressed"
+            else if (-f $file_name:r) then
+               echo "$file_name already decompressed"
             else
-               echo 'ERROR: Could not find "'$file_name'" to compress.'
+               echo 'ERROR: Could not find "'$file_name'" to (de)compress.'
                exit 57
             endif
 
