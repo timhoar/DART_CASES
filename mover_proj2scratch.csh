@@ -16,6 +16,7 @@
 # It's helpful to use the $casename here.
 #PBS  -o mover_proj2scratch.esp.eo
 #PBS  -j oe 
+#PBS  -k eod 
 #--------------------------------------------
 
 #  Usage: edit this file to change source, destination, etc.

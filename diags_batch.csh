@@ -26,21 +26,11 @@
 # Send standard output and error to this file.
 # It's helpful to use the $casename here.
 #PBS  -o diags_batch.eo
-#PBS  -j oe 
+#PBS  -j oe
+#PBS  -k eod
 # Run this after st_archive finishes with no errors.
 #PBS  -W depend=afterok:2290681.chadmin1.ib0.cheyenne.ucar.edu
 #--------------------------------------------
-
-#
-# Data Assimilation Research Testbed -- DART
-# Copyright 2004-2006, Data Assimilation Research Section
-# University Corporation for Atmospheric Research
-# Licensed under the GPL -- www.gpl.org/licenses/gpl.html
-#
-# <next three lines automatically updated by CVS, do not edit>
-# $Id: diags_batch.csh 13164 2019-05-05 03:42:48Z raeder@ucar.edu $
-# $Source: /home/thoar/CVS.REPOS/DART/models/cam/shell_scripts/diags.csh,v $
-# $Name:  $
 
 # DART source directory on this machine
 

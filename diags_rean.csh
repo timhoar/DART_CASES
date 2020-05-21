@@ -4,8 +4,6 @@
 # by UCAR, "as is", without charge, subject to all terms of use at
 # http://www.image.ucar.edu/DAReS/DART/DART_download
 #
-# $Id$
-#
 #PBS  -N diags_rean
 #PBS  -A NCIS0006
 # #PBS  -A P86850054
@@ -23,6 +21,7 @@
 # It's helpful to use the $casename here.
 #PBS  -o diags_rean.eo
 #PBS  -j oe 
+#PBS  -k eod 
 #--------------------------------------------
 
 # obs_diag can now take a namelist argument that specifies a file
@@ -166,8 +165,3 @@ endif
 
 exit
 
-# <next few lines under version control, do not edit>
-# $URL$
-# $Id$
-# $Revision$
-# $Date$
