@@ -27,6 +27,8 @@
 # It's helpful to use the $casename here.
 #PBS  -o diags_batch.eo
 #PBS  -j oe 
+# Run this after st_archive finishes with no errors.
+#PBS  -W depend=afterok:2290681.chadmin1.ib0.cheyenne.ucar.edu
 #--------------------------------------------
 
 #
