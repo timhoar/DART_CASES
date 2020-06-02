@@ -461,6 +461,8 @@ if ($do_restarts == true) then
             echo "          cp ../../logs/{*_0001,cesm}.log.[file name parts]* . "
             echo "       3) Compress the *.r.* files (probably with compress.csh)."
             echo "       4) Then rerun this with do_forcing turned off."
+            echo "       5) If it fails again (e.g. rest dir could not be removed),"
+            echo "          set pre_clean = false."
             exit 59
          endif
       

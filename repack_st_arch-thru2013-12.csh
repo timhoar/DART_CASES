@@ -91,6 +91,7 @@
 # # It's helpful to use the $CASE name here.
 # #PBS  -o Test2.eo
 # #PBS  -j oe 
+# #PBS  -k eod 
 # #--------------------------------------------
 
 # if ($?PBS_O_WORKDIR) then

@@ -37,6 +37,7 @@
 #PBS  -M raeder@ucar.edu
 #PBS  -o diags_rean.eo
 #PBS  -j oe 
+#PBS  -k eod 
 #--------------------------------------------
 
 if ($?PBS_O_WORKDIR) then
@@ -171,3 +172,4 @@ endif
 # rm *obs_seq*${yymm}*
 
 exit 0
+
