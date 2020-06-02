@@ -40,6 +40,7 @@
 #PBS  -o compress.out
 #PBS  -k eod
 #PBS  -j oe 
+#PBS  -k eod 
 
 # Submit from CASEROOT instead of the rest directory,
 # so that the job output file doesn't clutter the data directory
